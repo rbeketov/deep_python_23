@@ -2,3 +2,5 @@
 .DS_Store
 /__pycache__
 .DS_Store
+01/src/__pycache__
+01/tests/__pycache__
