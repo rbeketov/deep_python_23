@@ -1,5 +1,6 @@
-from task_1 import predict_message_mood
+from predict_mood import predict_message_mood
 from model import SomeModel
+
 
 def main():
     model = SomeModel()
