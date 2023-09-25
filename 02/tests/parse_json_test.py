@@ -1,9 +1,10 @@
 import unittest
+import json
 from unittest import mock
 from tests.json_generator import JSONGenerator
-import json
 from src.parse_json import parse_json
 from src.parse_json import INCORRECT_VALUES
+
 
 class TestParseJSON(unittest.TestCase):
     def test_correct_callback_calls(self):
@@ -20,7 +21,7 @@ class TestParseJSON(unittest.TestCase):
             ]
 
             expected_calls.sort()
-            mock_callback.mock_calls.sort()     
+            mock_callback.mock_calls.sort()
             self.assertEqual(expected_calls, mock_callback.mock_calls)
 
     def test_incorrect_input_value(self):
@@ -57,7 +58,7 @@ class TestParseJSON(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             parse_json(json_str, keys, words, 123)
         self.assertEqual(str(context.exception), INCORRECT_VALUES)
-    
+
     def test_missing_field_non_callback(self):
         json_str = '{"age": "30", "city": "New York"}'
         required_fields = ['age', 'city']
@@ -68,7 +69,6 @@ class TestParseJSON(unittest.TestCase):
         expected_calls = []
         self.assertEqual(expected_calls, mock_callback.mock_calls)
 
-
         json_str = '{"age": "30", "city": "New York"}'
         required_fields = []
         keywords = []
@@ -77,7 +77,6 @@ class TestParseJSON(unittest.TestCase):
         parse_json(json_str, required_fields, keywords, mock_callback)
         expected_calls = []
         self.assertEqual(expected_calls, mock_callback.mock_calls)
-
 
         json_str = '{"age": "30", "city": "New York"}'
         required_fields = ['test']
@@ -88,7 +87,6 @@ class TestParseJSON(unittest.TestCase):
         expected_calls = []
         self.assertEqual(expected_calls, mock_callback.mock_calls)
 
-
         json_str = '{"age": "30", "city": "New York"}'
         required_fields = []
         keywords = ['test']
@@ -98,3 +96,6 @@ class TestParseJSON(unittest.TestCase):
         expected_calls = []
         self.assertEqual(expected_calls, mock_callback.mock_calls)
 
+
+if __name__ == '__main__':
+    unittest.main()

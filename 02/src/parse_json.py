@@ -2,6 +2,7 @@ import json
 
 INCORRECT_VALUES = "Некорректные аргументы"
 
+
 def parse_json(json_str: str, required_fields=None, keywords=None, keyword_callback=None):
     if (
         not isinstance(json_str, str) or
@@ -10,7 +11,7 @@ def parse_json(json_str: str, required_fields=None, keywords=None, keyword_callb
         not callable(keyword_callback)
     ):
         raise ValueError(INCORRECT_VALUES)
-    
+
     json_doc = json.loads(json_str)
 
     for key in set(required_fields):
@@ -18,4 +19,3 @@ def parse_json(json_str: str, required_fields=None, keywords=None, keyword_callb
             for word in set(keywords):
                 if word in json_doc[key].split():
                     keyword_callback(word)
-

@@ -1,6 +1,7 @@
-from faker import Faker
 import random
 from collections import Counter
+from faker import Faker
+
 
 class JSONGenerator:
     def __init__(self):
@@ -45,7 +46,6 @@ class JSONGenerator:
                                     callback_info[word] += 1
 
         return json_data, keys, words, callback_info
-        
 
     def __generate_random_string(self):
         length = random.randint(5, 15)
