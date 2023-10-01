@@ -2,8 +2,8 @@ import unittest
 from unittest import mock
 import types
 import io
-from src.rf_gen import BAD_INPUT_DATA
-from src.rf_gen import read_and_filter_file_gen
+from rf_gen import BAD_INPUT_DATA
+from rf_gen import read_and_filter_file_gen
 
 
 class TestReadAndFilterFileGen(unittest.TestCase):
@@ -99,6 +99,56 @@ class TestReadAndFilterFileGen(unittest.TestCase):
         with mock.patch("builtins.open", side_effect=PermissionError("Permission denied")):
             with self.assertRaises(PermissionError):
                 list(read_and_filter_file_gen('file.txt', search_words))
+
+    def test_case_insensitivity_in_input_data(self):
+        input_data = "test lIne 1\ntest liNe 2\ntest LINE 3\n"
+        search_words = ['line']
+        expected_result = ['test lIne 1', 'test liNe 2', 'test LINE 3']
+
+        with mock.patch("builtins.open", mock.mock_open(read_data=input_data)):
+            result = list(read_and_filter_file_gen('input.txt', search_words))
+
+        self.assertEqual(result, expected_result)
+
+    def test_case_insensitivity_in_search_words(self):
+        input_data = "test line 1\ntest line 2\ntest line 3\n"
+        search_words = ['LIne']
+        expected_result = ['test line 1', 'test line 2', 'test line 3']
+
+        with mock.patch("builtins.open", mock.mock_open(read_data=input_data)):
+            result = list(read_and_filter_file_gen('input.txt', search_words))
+
+        self.assertEqual(result, expected_result)
+
+    def test_case_insensitivity_in_search_words_and_input_data(self):
+        input_data = "test lINe 1\ntest LinE 2\ntest LINE 3\n"
+        search_words = ['LIne']
+        expected_result = ['test lINe 1', 'test LinE 2', 'test LINE 3']
+
+        with mock.patch("builtins.open", mock.mock_open(read_data=input_data)):
+            result = list(read_and_filter_file_gen('input.txt', search_words))
+
+        self.assertEqual(result, expected_result)
+
+    def test_word_boundaries(self):
+        input_data = "Hello daddy\nHello mammy\nHello dad\n"
+        search_words = ['dad', 'mam']
+        expected_result = ['Hello dad']
+
+        with mock.patch("builtins.open", mock.mock_open(read_data=input_data)):
+            result = list(read_and_filter_file_gen('input.txt', search_words))
+
+        self.assertEqual(result, expected_result)
+
+    def test_multiple_matches_in_one_line(self):
+        input_data = "Hello daddy mammy and father\nHello mammy friend\nHello dad\n"
+        search_words = ['daddy', 'mammy', 'friend']
+        expected_result = ['Hello daddy mammy and father', 'Hello mammy friend']
+
+        with mock.patch("builtins.open", mock.mock_open(read_data=input_data)):
+            result = list(read_and_filter_file_gen('input.txt', search_words))
+
+        self.assertEqual(result, expected_result)
 
 
 if __name__ == '__main__':

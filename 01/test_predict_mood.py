@@ -1,9 +1,9 @@
 import unittest
 from unittest import mock
-from src.model import SomeModel
-from src.predict_mood import predict_message_mood
-from src.predict_mood import EXCELLENT_CONST, FINE_CONST
-from src.predict_mood import FAILURE_CONST, BAD_INPUT_DATA
+from model import SomeModel
+from predict_mood import predict_message_mood
+from predict_mood import EXCELLENT_CONST, FINE_CONST
+from predict_mood import FAILURE_CONST, BAD_INPUT_DATA
 
 
 class TestPredictMessageMood(unittest.TestCase):
@@ -13,31 +13,59 @@ class TestPredictMessageMood(unittest.TestCase):
     def test_valid_input(self):
         self.model.predict.return_value = 0.8
         self.assertEqual(predict_message_mood("Hello, world!", self.model), FINE_CONST)
-        self.model.predict.assert_called_with(message="Hello, world!")
+        self.model.predict.assert_has_calls([mock.call(message="Hello, world!")])
+        self.assertEqual(self.model.predict.call_count, 1)
 
         self.model.predict.return_value = 0.81
         self.assertEqual(predict_message_mood("Hello, world!", self.model), EXCELLENT_CONST)
-        self.model.predict.assert_called_with(message="Hello, world!")
+        self.model.predict.assert_has_calls([mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!")])
+        self.assertEqual(self.model.predict.call_count, 2)
 
         self.model.predict.return_value = 0.29
         self.assertEqual(predict_message_mood("Hello, world!", self.model), FAILURE_CONST)
-        self.model.predict.assert_called_with(message="Hello, world!")
+        self.model.predict.assert_has_calls([mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!")])
+        self.assertEqual(self.model.predict.call_count, 3)
 
         self.model.predict.return_value = 0.99
         self.assertEqual(predict_message_mood("Hello, world!", self.model), EXCELLENT_CONST)
-        self.model.predict.assert_called_with(message="Hello, world!")
+        self.model.predict.assert_has_calls([mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!")])
+        self.assertEqual(self.model.predict.call_count, 4)
 
         self.model.predict.return_value = 1
         self.assertEqual(predict_message_mood("Hello, world!", self.model), EXCELLENT_CONST)
-        self.model.predict.assert_called_with(message="Hello, world!")
+        self.model.predict.assert_has_calls([mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!")])
+        self.assertEqual(self.model.predict.call_count, 5)
 
         self.model.predict.return_value = 0.3
         self.assertEqual(predict_message_mood("Hello, world!", self.model), FINE_CONST)
-        self.model.predict.assert_called_with(message="Hello, world!")
+        self.model.predict.assert_has_calls([mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!")])
+        self.assertEqual(self.model.predict.call_count, 6)
 
         self.model.predict.return_value = 0
         self.assertEqual(predict_message_mood("Hello, world!", self.model), FAILURE_CONST)
-        self.model.predict.assert_called_with(message="Hello, world!")
+        self.model.predict.assert_has_calls([mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!"),
+                                             mock.call(message="Hello, world!")])
+        self.assertEqual(self.model.predict.call_count, 7)
 
     def test_boundary_thresholds(self):
         self.model.predict.return_value = 0.

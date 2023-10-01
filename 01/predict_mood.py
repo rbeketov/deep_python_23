@@ -1,4 +1,4 @@
-from src.model import SomeModel
+from model import SomeModel
 
 EXCELLENT_CONST = 'отл'
 FINE_CONST = 'норм'
