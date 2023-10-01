@@ -2,9 +2,9 @@
 ```
 ./run_tests.sh
 ```
-или (из корневой директории):
+или:
 ```
-python3 -m unittest tests/parse_json_test.py tests/mean_k_calls_test.py
+python3 -m unittest test_parse_json.py test_mean_k_calls.py
 ```
 
 Запуск линетров:
@@ -14,13 +14,14 @@ python3 -m unittest tests/parse_json_test.py tests/mean_k_calls_test.py
 
 Coverage report:
 ```
-Name                         Stmts   Miss  Cover
-------------------------------------------------
-src/mean_k_calls.py             21      0   100%
-src/parse_json.py               11      0   100%
-tests/json_generator.py         34      0   100%
-tests/mean_k_calls_test.py      72      8    89%
-tests/parse_json_test.py        75      1    99%
-------------------------------------------------
-TOTAL                          213      9    96%
+Name                   Stmts   Miss  Cover
+------------------------------------------
+json_generator.py         34      0   100%
+mean_k_calls.py           21      0   100%
+parse_json.py             11      0   100%
+test_mean_k_calls.py      72      8    89%
+test_parse_json.py       112      1    99%
+------------------------------------------
+TOTAL                    250      9    96%
+
 ```

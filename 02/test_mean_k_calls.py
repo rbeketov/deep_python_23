@@ -3,8 +3,8 @@ import io
 import unittest
 import time
 
-from src.mean_k_calls import time_mean_last_k_calls
-from src.mean_k_calls import INCORRECT_VALUES
+from mean_k_calls import time_mean_last_k_calls
+from mean_k_calls import INCORRECT_VALUES
 
 
 class TestMeanTimeLastKCalls(unittest.TestCase):

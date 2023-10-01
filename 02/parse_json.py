@@ -17,5 +17,5 @@ def parse_json(json_str: str, required_fields=None, keywords=None, keyword_callb
     for key in set(required_fields):
         if key in json_doc.keys():
             for word in set(keywords):
-                if word in json_doc[key].split():
+                if word.lower() in json_doc[key].lower().split():
                     keyword_callback(word)
