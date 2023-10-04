@@ -1,9 +1,16 @@
 import io
+from typing import List
 
 BAD_INPUT_DATA = 'Неверный формат входных данных'
 
 
-def read_and_filter_file_gen(file_input, search_words: list):
+def read_and_filter_file_gen(file_input, search_words: List[str]):
+    if (
+        not isinstance(search_words, list) or
+        not all(isinstance(word, str) for word in search_words)
+    ):
+        raise ValueError(BAD_INPUT_DATA)
+
     def process_file(file):
         for line in file:
             if any(word.lower() in line.lower().split() for word in search_words):
@@ -18,4 +25,4 @@ def read_and_filter_file_gen(file_input, search_words: list):
     elif isinstance(file_input, io.IOBase):
         yield from process_file(file_input)
     else:
-        raise AttributeError(BAD_INPUT_DATA)
+        raise ValueError(BAD_INPUT_DATA)

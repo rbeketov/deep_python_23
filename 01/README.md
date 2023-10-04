@@ -18,9 +18,9 @@ Name                   Stmts   Miss  Cover
 ------------------------------------------
 model.py                   5      2    60%
 predict_mood.py           14      0   100%
-rf_gen.py                 16      0   100%
+rf_gen.py                 19      0   100%
 test_predict_mood.py      62      1    98%
-test_rf_gen.py           111      1    99%
+test_rf_gen.py           124      1    99%
 ------------------------------------------
-TOTAL                    208      4    98%
+TOTAL                    224      4    98%
 ```

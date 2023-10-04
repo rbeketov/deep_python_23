@@ -34,7 +34,7 @@ class TestReadAndFilterFileGen(unittest.TestCase):
         self.assertEqual(result, expected_result)
 
     def test_bad_input_data(self):
-        with self.assertRaises(AttributeError) as context:
+        with self.assertRaises(ValueError) as context:
             list(read_and_filter_file_gen(500, ['word']))
         self.assertEqual(str(context.exception), BAD_INPUT_DATA)
 
@@ -149,6 +149,23 @@ class TestReadAndFilterFileGen(unittest.TestCase):
             result = list(read_and_filter_file_gen('input.txt', search_words))
 
         self.assertEqual(result, expected_result)
+
+    def test_incorrect_type_search_word(self):
+        with self.assertRaises(ValueError) as context:
+            list(read_and_filter_file_gen('input.txt', 123))
+        self.assertEqual(str(context.exception), BAD_INPUT_DATA)
+
+        with self.assertRaises(ValueError) as context:
+            list(read_and_filter_file_gen('input.txt', 'str'))
+        self.assertEqual(str(context.exception), BAD_INPUT_DATA)
+
+        with self.assertRaises(ValueError) as context:
+            list(read_and_filter_file_gen('input.txt', ['12', '12', 12]))
+        self.assertEqual(str(context.exception), BAD_INPUT_DATA)
+
+        with self.assertRaises(ValueError) as context:
+            list(read_and_filter_file_gen('input.txt', [12]))
+        self.assertEqual(str(context.exception), BAD_INPUT_DATA)
 
 
 if __name__ == '__main__':
