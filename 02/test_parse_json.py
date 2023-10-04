@@ -59,6 +59,26 @@ class TestParseJSON(unittest.TestCase):
             parse_json(json_str, keys, words, 123)
         self.assertEqual(str(context.exception), INCORRECT_VALUES)
 
+        with self.assertRaises(ValueError) as context:
+            parse_json(json_str, keys, [12, '12'], print)
+        self.assertEqual(str(context.exception), INCORRECT_VALUES)
+
+        with self.assertRaises(ValueError) as context:
+            parse_json(json_str, [12, '12'], words, print)
+        self.assertEqual(str(context.exception), INCORRECT_VALUES)
+
+        with self.assertRaises(ValueError) as context:
+            parse_json(json_str, '123', words, print)
+        self.assertEqual(str(context.exception), INCORRECT_VALUES)
+
+        with self.assertRaises(ValueError) as context:
+            parse_json(json_str, keys, 'word', print)
+        self.assertEqual(str(context.exception), INCORRECT_VALUES)
+
+        with self.assertRaises(ValueError) as context:
+            parse_json(json_str, 1, 'word', print)
+        self.assertEqual(str(context.exception), INCORRECT_VALUES)
+
     def test_missing_field_non_callback(self):
         json_str = '{"age": "30", "city": "New York"}'
         required_fields = ['age', 'city']

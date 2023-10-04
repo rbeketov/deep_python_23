@@ -7,7 +7,9 @@ def parse_json(json_str: str, required_fields=None, keywords=None, keyword_callb
     if (
         not isinstance(json_str, str) or
         not isinstance(required_fields, (list, set)) or
+        not all(isinstance(field, str) for field in required_fields) or
         not isinstance(keywords, (list, set)) or
+        not all(isinstance(keyword, str) for keyword in keywords) or
         not callable(keyword_callback)
     ):
         raise ValueError(INCORRECT_VALUES)
