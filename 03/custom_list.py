@@ -13,24 +13,19 @@ class CustomList(List[int]):
             raise TypeError(TYPE_ERROR_MESSAGE_INIT) from exc
         if isinstance(input_list, CustomList):
             raise TypeError(TYPE_ERROR_MESSAGE_INIT)
-
-        self.__list = input_list
-
-    def __iter__(self):
-        return iter(self.__list)
+        super().__init__(input_list)
 
     def __add__(self, other: List[int]) -> 'CustomList':
         self.__check_correct_type_for_arithmetic(other)
         result = []
-        min_len = min(len(other), len(self.__list))
-
+        min_len = min(len(other), len(self))
         for i in range(min_len):
-            result.append(other[i] + self.__list[i])
+            result.append(other[i] + self[i])
 
-        if len(other) > len(self.__list):
+        if len(other) > len(self):
             result.extend(other[min_len:])
-        elif len(other) < len(self.__list):
-            result.extend(self.__list[min_len:])
+        elif len(other) < len(self):
+            result.extend(self[min_len:])
 
         return CustomList(result)
 
@@ -44,19 +39,19 @@ class CustomList(List[int]):
 
     def __rsub__(self, other: List[int]) -> 'CustomList':
         self.__check_correct_type_for_arithmetic(other)
-        return CustomList([-x for x in self.__list]).__add__(other)
+        return CustomList([-x for x in self]).__add__(other)
 
     def __lt__(self, other: 'CustomList') -> bool:
         self.__check_correct_type_for_compare(other)
-        return sum(self.__list) < other._get_sum()
+        return sum(self) < other._get_sum()
 
     def __le__(self, other: 'CustomList') -> bool:
         self.__check_correct_type_for_compare(other)
-        return sum(self.__list) <= other._get_sum()
+        return sum(self) <= other._get_sum()
 
     def __eq__(self, other: 'CustomList') -> bool:
         self.__check_correct_type_for_compare(other)
-        return sum(self.__list) == other._get_sum()
+        return sum(self) == other._get_sum()
 
     def __ne__(self, other: 'CustomList') -> bool:
         self.__check_correct_type_for_compare(other)
@@ -71,10 +66,10 @@ class CustomList(List[int]):
         return not self.__lt__(other)
 
     def __str__(self) -> str:
-        return f"{self.__list}\nСумма элементов списка = {sum(self.__list)}"
+        return f"{str(str(list(self)))}\nСумма элементов списка = {sum(self)}"
 
     def _get_sum(self) -> int:
-        return sum(self.__list)
+        return sum(self)
 
     @staticmethod
     def __check_correct_type_for_arithmetic(object_):
