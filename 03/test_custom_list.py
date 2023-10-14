@@ -5,9 +5,10 @@ from custom_list import TYPE_ERROR_MESSAGE_ARIFMETIC
 from custom_list import TYPE_ERROR_MESSAGE_COMPARE
 from custom_list import TYPE_ERROR_MESSAGE_INIT
 
+
 class TestCustomList(unittest.TestCase):
     def trst_correct_create(self):
-        list_ = CustomList([1, 2, 3, 4 ,5])
+        list_ = CustomList([1, 2, 3, 4, 5])
         self.assertIsInstance(list_, CustomList)
 
         self.assertEqual(list_[0], 1)
@@ -16,14 +17,14 @@ class TestCustomList(unittest.TestCase):
         self.assertEqual(list_[3], 4)
         self.assertEqual(list_[4], 5)
 
-        self.assertEqual(len(list_), len([1, 2, 3, 4 ,5]))
+        self.assertEqual(len(list_), len([1, 2, 3, 4, 5]))
 
         list_.append(6)
         self.assertEqual(list_[5], 6)
 
     def test_incorrect_create(self):
         with self.assertRaises(TypeError) as context:
-            CustomList([1, 2, 3, 4 , '5'])
+            CustomList([1, 2, 3, 4, '5'])
         self.assertEqual(str(context.exception), TYPE_ERROR_MESSAGE_INIT)
 
         with self.assertRaises(TypeError) as context:
@@ -222,7 +223,7 @@ class TestCustomList(unittest.TestCase):
         self.assertGreater(CustomList([1, 2, 4]), CustomList([1, 2, 3]))
         self.assertGreater(CustomList([1, -3, 10]), CustomList([1, 2, 3]))
         self.assertGreater(CustomList([10]), CustomList([1, 2, 3]))
-        self.assertGreater(CustomList([10, 0, 0, 0 , -1]), CustomList([1, 2, 3]))
+        self.assertGreater(CustomList([10, 0, 0, 0, -1]), CustomList([1, 2, 3]))
         self.assertGreater(CustomList([10]), CustomList([1, 2, 3, 0, 0, 0]))
 
         self.assertGreaterEqual(CustomList([10]), CustomList([1, 2, 3, 0, 0, 0]))
@@ -279,6 +280,7 @@ class TestCustomList(unittest.TestCase):
         expected_result = "[1, -2, 3]\nСумма элементов списка = 2"
         result = str(custom_list)
         self.assertEqual(result, expected_result)
+
 
 if __name__ == "__main__":
     unittest.main()
