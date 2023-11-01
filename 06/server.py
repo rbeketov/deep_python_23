@@ -16,6 +16,7 @@ class ConstEnum(IntEnum):
     HOST_NUMBER = 0
     PORT_NUMBER = 1
 
+
 class SingleTone(type):
     _instances = {}
 
@@ -88,6 +89,8 @@ class ServerMaster(threading.Thread):
                     client_socket, client_address = self.socket.accept()
                 except socket.timeout:
                     continue
+                except Exception:
+                    continue
 
                 print(f"Accepted connection from {client_address}")
                 self.queue.put(client_socket)
@@ -99,7 +102,7 @@ class ServerMaster(threading.Thread):
             for worker in workers:
                 worker.join()
 
-    def stop(self):
+    def stop(self) -> None:
         self._stop_event.set()
 
 
@@ -165,7 +168,7 @@ class WorkerProcessUrl(threading.Thread):
             self.logger_statistic.add_with_error()
             return {"Error": f"{err}"}
 
-    def stop(self):
+    def stop(self) -> None:
         self._stop_event.set()
 
 

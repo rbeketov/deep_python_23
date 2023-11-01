@@ -1,12 +1,13 @@
 import unittest
 import json
-
+import socket
 
 from time import sleep
-from server import ServerMaster, WorkerProcessUrl
 from unittest.mock import Mock, patch
 from queue import Queue
 from urllib.error import HTTPError
+
+from server import ServerMaster, WorkerProcessUrl
 from server import ConstEnum
 
 TYPE_ERROR_MESSAGE = "Invalid data types"
@@ -98,7 +99,7 @@ class TestServer(unittest.TestCase):
             mock_urlopen.assert_called_once_with(url)
             mock_response.read.assert_called_once_with()
 
-            mock_parser_html.assert_called_once_with("<p>This is a test. test. test.</p>")            
+            mock_parser_html.assert_called_once_with("<p>This is a test. test. test.</p>")
             worker.logger_statistic.add_without_error.assert_called_once()
             self.assertEqual(result, expected_result)
 
@@ -120,7 +121,7 @@ class TestServer(unittest.TestCase):
             mock_urlopen.assert_called_once_with(url)
             mock_response.read.assert_called_once_with()
 
-            mock_parser_html.assert_called_once_with("")            
+            mock_parser_html.assert_called_once_with("")
             worker.logger_statistic.add_without_error.assert_called_once()
             self.assertEqual(result, expected_result)
 
@@ -203,7 +204,7 @@ class TestServer(unittest.TestCase):
             response_json = json.dumps({"test5": 5, "test3": 3})
 
             worker.start()
-            sleep(2)
+            sleep(0.2)
             worker.stop()
             worker.join()
 
@@ -212,6 +213,80 @@ class TestServer(unittest.TestCase):
             mock_socket.send.assert_called_once_with(response_json.encode('utf-8'))
             self.assertEqual(mock_print.call_count, 2)
             calls = [unittest.mock.call(f"{worker.name} started working"),
-                     unittest.mock.call(worker.logger_statistic)
-            ]
+                     unittest.mock.call(worker.logger_statistic)]
+
             mock_print.assert_has_calls(calls, any_order=False)
+
+    def test_worker_exception_while_send(self):
+        queue = Queue()
+
+        mock_socket = Mock()
+        mock_socket.recv.return_value = "http://example.com".encode('utf-8')
+        mock_socket.send.side_effect = Exception("Send failed")
+        queue.put(mock_socket)
+
+        worker = WorkerProcessUrl(queue, 5)
+        worker.logger_statistic = Mock()
+
+        with patch.object(worker, 'process_url') as mock_process_url, \
+             patch('builtins.print') as mock_print:
+            mock_process_url.return_value = {"test5": 5, "test3": 3}
+            response_json = json.dumps({"test5": 5, "test3": 3})
+
+            worker.start()
+            sleep(0.2)
+            worker.stop()
+            worker.join()
+
+            mock_socket.recv.assert_called_once_with(ConstEnum.BYTES)
+            mock_process_url.assert_called_once_with("http://example.com")
+            mock_socket.send.assert_called_once_with(response_json.encode('utf-8'))
+            mock_socket.close.assert_called_once_with()
+            self.assertEqual(mock_print.call_count, 3)
+            calls = [unittest.mock.call(f"{worker.name} started working"),
+                     unittest.mock.call("Error sending response to client: Send failed"),
+                     unittest.mock.call(worker.logger_statistic)]
+
+            mock_print.assert_has_calls(calls, any_order=False)
+
+    def test_master_run_and_process(self):
+        with patch('socket.socket') as mock_socket, \
+             patch('builtins.print') as mock_print, \
+             patch('server.WorkerProcessUrl') as mock_worker:
+            mock_socket_obj = Mock()
+            mock_socket.return_value = mock_socket_obj
+
+            mock_client_socket = Mock()
+
+            def side_effect_accept():
+                yield (mock_client_socket, "Address")
+                while True:
+                    yield socket.timeout
+                    return
+
+            mock_socket_obj.accept.side_effect = side_effect_accept()
+            mock_queue = Mock()
+            mock_worker.return_value = mock_worker
+            server = ServerMaster("localhost", 8080, 5, 10)
+            server.queue = mock_queue
+
+            server.start()
+            server.stop()
+            server.join()
+
+            mock_queue.put.assert_called_once_with(mock_client_socket)
+
+            calls = [unittest.mock.call("Server is listening on localhost:8080 with 5 workers"),
+                     unittest.mock.call("Accepted connection from Address"),
+                     unittest.mock.call("Server closed")]
+
+            mock_print.assert_has_calls(calls, any_order=False)
+            # создание, запуск, джоин: 3*5=15
+            self.assertEqual(len(mock_worker.mock_calls), 15)
+            for worker in mock_worker:
+                worker.start.assert_called_once()
+                worker.join.assert_called_once()
+
+
+if __name__ == "__main__":
+    unittest.main()
