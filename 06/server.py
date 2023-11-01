@@ -5,7 +5,7 @@ import json
 import urllib.request
 import re
 
-from queue import Queue
+from queue import Queue, Empty
 from collections import Counter
 from enum import IntEnum
 from bs4 import BeautifulSoup
@@ -15,7 +15,6 @@ class ConstEnum(IntEnum):
     BYTES = 1024
     HOST_NUMBER = 0
     PORT_NUMBER = 1
-
 
 class SingleTone(type):
     _instances = {}
@@ -34,11 +33,11 @@ class StatisticCounetr(metaclass=SingleTone):
 
     def add_without_error(self) -> None:
         self._total_count += 1
-    
+
     def add_with_error(self) -> None:
         self._total_count += 1
         self._count_with_error += 1
-    
+
     def __str__(self) -> str:
         output = f"A total of {self._total_count} "
         output += f"of them were processed with an error of {self._count_with_error}"
@@ -69,28 +68,39 @@ class ServerMaster(threading.Thread):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.bind((self.host, self.port))
         self.queue = Queue()
-
+        self._stop_event = threading.Event()
+        self.socket.settimeout(5)
 
     def run(self) -> None:
         try:
+            self._stop_event.clear()
             self.socket.listen()
             print(f"Server is listening on {self.host}:{self.port} with {self.num_workers} workers")
-            workers = [WorkerProcessUrl(self.queue, self.top_count) 
-                    for _ in range(self.num_workers)]
+            workers = [WorkerProcessUrl(self.queue, self.top_count)
+                       for _ in range(self.num_workers)]
             for worker in workers:
                 worker.start()
 
             while True:
-                client_socket, client_address = self.socket.accept()
+                if self._stop_event.is_set():
+                    break
+                try:
+                    client_socket, client_address = self.socket.accept()
+                except socket.timeout:
+                    continue
+
                 print(f"Accepted connection from {client_address}")
                 self.queue.put(client_socket)
 
-        except Exception as e:
-            print(f"Error: {str(e)}")
+        except Exception as err:
+            print(f"Error: {str(err)}")
         finally:
-            print(f"Server closed")
+            print("Server closed")
             for worker in workers:
                 worker.join()
+
+    def stop(self):
+        self._stop_event.set()
 
 
 class WorkerProcessUrl(threading.Thread):
@@ -107,24 +117,32 @@ class WorkerProcessUrl(threading.Thread):
         self.queue = queue
         self.top_count = top_count
         self.logger_statistic = StatisticCounetr()
+        self._stop_event = threading.Event()
 
     def run(self) -> None:
-        th = threading.current_thread()
-        print(f"{th.name} started working")
+        thread = threading.current_thread()
+        print(f"{thread.name} started working")
+        self._stop_event.clear()
         while True:
-            client_socket = self.queue.get()
+            if self._stop_event.is_set():
+                break
+            try:
+                client_socket = self.queue.get(timeout=2)
+            except Empty:
+                continue
+
             url = client_socket.recv(ConstEnum.BYTES).decode("utf-8").strip()
             word_count = self.process_url(url)
             response_json = json.dumps(word_count)
             try:
                 client_socket.send(response_json.encode('utf-8'))
-            except Exception as e:
-                print(f"Error sending response to client: {e}")
+            except Exception as err:
+                print(f"Error sending response to client: {err}")
                 client_socket.close()
             finally:
                 print(self.logger_statistic)
 
-    def parserHTML(self, html_content: str) -> str:
+    def parser_html(self, html_content: str) -> str:
         if not isinstance(html_content, str):
             raise TypeError("Invalid data types")
 
@@ -139,13 +157,16 @@ class WorkerProcessUrl(threading.Thread):
         try:
             with urllib.request.urlopen(url) as response:
                 content = response.read().decode('utf-8')
-            words = self.parserHTML(content)
+            words = self.parser_html(content)
             word_count = dict(Counter(words).most_common(self.top_count))
             self.logger_statistic.add_without_error()
             return word_count
-        except Exception as e:
+        except Exception as err:
             self.logger_statistic.add_with_error()
-            return {"Error": f"{e}"}
+            return {"Error": f"{err}"}
+
+    def stop(self):
+        self._stop_event.set()
 
 
 def main():

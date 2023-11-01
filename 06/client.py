@@ -1,6 +1,6 @@
 import socket
 import threading
-from sys import argv, exit
+from sys import argv
 from queue import Queue
 from enum import IntEnum
 
@@ -35,7 +35,6 @@ class ClientSendUrls:
         self.que = Queue(self.num_workers)
         self.file_with_urls = file_with_urls
 
-
     def start(self) -> None:
         try:
             workers = [WorkerSendUrls(self.que,
@@ -45,8 +44,8 @@ class ClientSendUrls:
             for worker in workers:
                 worker.start()
             self.load_urls()
-        except Exception as e:
-            print(f"Error: {str(e)}\n")
+        except Exception as err:
+            print(f"Error: {str(err)}\n")
         finally:
             for worker in workers:
                 worker.join()
@@ -60,11 +59,11 @@ class ClientSendUrls:
                     correct_url = url.strip() + '\n'
                     self.que.put((i, correct_url))
                     print(f"Uploaded url number {i}")
-        except Exception as e:
-            raise Exception(f"Error while try upload urls: {str(e)}")
+        except Exception as err:
+            raise RuntimeError(f"Error while try upload urls: {str(err)}") from err
         finally:
             self.que.put((None, None))
-            
+
 
 class WorkerSendUrls(threading.Thread):
     def __init__(self,
@@ -84,8 +83,8 @@ class WorkerSendUrls(threading.Thread):
         self.port = port
 
     def run(self) -> None:
-        th = threading.current_thread()
-        print(f"{th.name} started working")
+        thread = threading.current_thread()
+        print(f"{thread.name} started working")
         while True:
             try:
                 number, url = self.queue.get()
@@ -99,8 +98,8 @@ class WorkerSendUrls(threading.Thread):
                     result = connection.recv(ConstEnum.BYTES).decode("utf-8")
                     print(f"Url (number {number}) {url.strip()}, result:\n{result}")
 
-            except Exception as e:
-                print(f"Error while try process url number {number}: {str(e)}")
+            except Exception as err:
+                print(f"Error while try process url number {number}: {str(err)}")
 
 
 def main() -> None:
