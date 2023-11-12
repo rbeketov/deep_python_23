@@ -25,17 +25,63 @@ class TestDescriptors(unittest.TestCase):
         self.assertEqual(instance.phone_number, "+7-902-704-8912")
         self.assertEqual(instance.__dict__["__phone_number"], "+7-902-704-8912")
 
+    def test_set_invalid_value(self):
+        instance = Data("192.168.2.1", 7, "+7-904-704-8912")
         with self.assertRaises(ValueError) as context:
             instance.prime = 4
         self.assertEqual(str(context.exception), "Invalid value")
+        self.assertEqual(instance.prime, 7)
+        self.assertEqual(instance.__dict__["__prime"], 7)
+        with self.assertRaises(ValueError) as context:
+            instance.prime = [12, 12, 12]
+        self.assertEqual(str(context.exception), "Invalid value")
+        self.assertEqual(instance.prime, 7)
+        self.assertEqual(instance.__dict__["__prime"], 7)
 
         with self.assertRaises(ValueError) as context:
             instance.phone_number = "++++"
         self.assertEqual(str(context.exception), "Invalid value")
+        self.assertEqual(instance.phone_number, "+7-904-704-8912")
+        self.assertEqual(instance.__dict__["__phone_number"], "+7-904-704-8912")
+        with self.assertRaises(ValueError) as context:
+            instance.phone_number = 89
+        self.assertEqual(str(context.exception), "Invalid value")
+        self.assertEqual(instance.phone_number, "+7-904-704-8912")
+        self.assertEqual(instance.__dict__["__phone_number"], "+7-904-704-8912")
 
         with self.assertRaises(ValueError) as context:
             instance.ip = 4
         self.assertEqual(str(context.exception), "Invalid value")
+        self.assertEqual(instance.ip, "192.168.2.1")
+        self.assertEqual(instance.__dict__["__ip"], "192.168.2.1")
+        with self.assertRaises(ValueError) as context:
+            instance.ip = "214124124.214124"
+        self.assertEqual(str(context.exception), "Invalid value")
+        self.assertEqual(instance.ip, "192.168.2.1")
+        self.assertEqual(instance.__dict__["__ip"], "192.168.2.1")
+
+    def test_set_valid_value(self):
+        instance = Data("192.168.2.1", 7, "+7-904-704-8912")
+        instance.prime = 13
+        self.assertEqual(instance.prime, 13)
+        self.assertEqual(instance.__dict__["__prime"], 13)
+        instance.prime = 3
+        self.assertEqual(instance.prime, 3)
+        self.assertEqual(instance.__dict__["__prime"], 3)
+
+        instance.phone_number = "+7-904-704-0000"
+        self.assertEqual(instance.phone_number, "+7-904-704-0000")
+        self.assertEqual(instance.__dict__["__phone_number"], "+7-904-704-0000")
+        instance.phone_number = "+7-904-704-1111"
+        self.assertEqual(instance.phone_number, "+7-904-704-1111")
+        self.assertEqual(instance.__dict__["__phone_number"], "+7-904-704-1111")
+
+        instance.ip = "192.168.2.254"
+        self.assertEqual(instance.ip, "192.168.2.254")
+        self.assertEqual(instance.__dict__["__ip"], "192.168.2.254")
+        instance.ip = "192.168.9.11"
+        self.assertEqual(instance.ip, "192.168.9.11")
+        self.assertEqual(instance.__dict__["__ip"], "192.168.9.11")
 
     def test_prime_descriptor(self):
         prime_desc = PrimeNumberDescriptor()

@@ -3,6 +3,56 @@ from custom_meta import CustomMeta
 
 
 class TestCustomMetaClass(unittest.TestCase):
+    def test_main_logic(self):
+        class CustomClass(metaclass=CustomMeta):
+            x = 50
+
+            def __init__(self, val=99):
+                self.val = val
+
+            def line(self):
+                return 100
+
+            def __str__(self):
+                return "Custom_by_metaclass"
+
+        self.assertEqual(CustomClass.custom_x, 50)
+        with self.assertRaises(AttributeError) as context:
+            CustomClass.x
+        self.assertEqual(str(context.exception),
+                         "type object 'CustomClass' has no attribute \'x\'")
+
+        inst = CustomClass()
+        self.assertEqual(inst.custom_x, 50)
+        self.assertEqual(inst.custom_val, 99)
+        self.assertEqual(inst.custom_line(), 100)
+        self.assertEqual(str(inst), "Custom_by_metaclass")
+
+        with self.assertRaises(AttributeError) as context:
+            inst.x
+        self.assertEqual(str(context.exception),
+                         "\'CustomClass\' object has no attribute \'x\'")
+        with self.assertRaises(AttributeError) as context:
+            inst.val
+        self.assertEqual(str(context.exception),
+                         "\'CustomClass\' object has no attribute \'val\'")
+        with self.assertRaises(AttributeError) as context:
+            inst.line()
+        self.assertEqual(str(context.exception),
+                         "\'CustomClass\' object has no attribute \'line\'")
+        with self.assertRaises(AttributeError) as context:
+            inst.yyy
+        self.assertEqual(str(context.exception),
+                         "\'CustomClass\' object has no attribute \'yyy\'")
+
+        inst.dynamic = "added later"
+        self.assertEqual(inst.custom_dynamic, "added later")
+        assert inst.custom_dynamic == "added later"
+        with self.assertRaises(AttributeError) as context:
+            inst.dynamic
+        self.assertEqual(str(context.exception),
+                         "\'CustomClass\' object has no attribute \'dynamic\'")
+
     def test_create_attr_class(self):
         class A(metaclass=CustomMeta):
             x = "x"
