@@ -21,4 +21,4 @@ def parse_json(json_str: str, required_fields=None, keywords=None, keyword_callb
             lower_json = json_doc[key].lower().split()
             for word in set(keywords):
                 if word.lower() in lower_json:
-                    keyword_callback(word)
+                    keyword_callback(key, word)

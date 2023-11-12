@@ -17,7 +17,8 @@ class TestParseJSON(unittest.TestCase):
             parse_json(json_str, keys, words, mock_callback)
 
             expected_calls = [
-                mock.call(word) for word, count in callback_info.items() for _ in range(count)
+                mock.call(key, word) for (key, word), count in callback_info.items()
+                for _ in range(count)
             ]
 
             expected_calls.sort()
@@ -34,7 +35,7 @@ class TestParseJSON(unittest.TestCase):
         self.assertEqual(str(context.exception), INCORRECT_VALUES)
 
         generator = JSONGenerator()
-        json_data, keys, words, callback_info = generator.create_json_keys_words(10)
+        json_data, keys, words, _ = generator.create_json_keys_words(10)
         json_str = json.dumps(json_data)
 
         with self.assertRaises(ValueError) as context:
@@ -84,7 +85,6 @@ class TestParseJSON(unittest.TestCase):
         required_fields = ['age', 'city']
         keywords = ['important']
         mock_callback = mock.Mock()
-
         parse_json(json_str, required_fields, keywords, mock_callback)
         expected_calls = []
         self.assertEqual(expected_calls, mock_callback.mock_calls)
@@ -93,7 +93,6 @@ class TestParseJSON(unittest.TestCase):
         required_fields = []
         keywords = []
         mock_callback = mock.Mock()
-
         parse_json(json_str, required_fields, keywords, mock_callback)
         expected_calls = []
         self.assertEqual(expected_calls, mock_callback.mock_calls)
@@ -102,7 +101,6 @@ class TestParseJSON(unittest.TestCase):
         required_fields = ['test']
         keywords = []
         mock_callback = mock.Mock()
-
         parse_json(json_str, required_fields, keywords, mock_callback)
         expected_calls = []
         self.assertEqual(expected_calls, mock_callback.mock_calls)
@@ -111,7 +109,6 @@ class TestParseJSON(unittest.TestCase):
         required_fields = []
         keywords = ['test']
         mock_callback = mock.Mock()
-
         parse_json(json_str, required_fields, keywords, mock_callback)
         expected_calls = []
         self.assertEqual(expected_calls, mock_callback.mock_calls)
@@ -121,7 +118,22 @@ class TestParseJSON(unittest.TestCase):
         required_fields = ['age', 'city']
         keywords = ['30']
         mock_callback = mock.Mock()
+        parse_json(json_str, required_fields, keywords, mock_callback)
+        expected_calls = []
+        self.assertEqual(expected_calls, mock_callback.mock_calls)
 
+        json_str = '{"age": "30", "city": "New York"}'
+        required_fields = ['AGE', 'cIty']
+        keywords = ['30', 'new']
+        mock_callback = mock.Mock()
+        parse_json(json_str, required_fields, keywords, mock_callback)
+        expected_calls = []
+        self.assertEqual(expected_calls, mock_callback.mock_calls)
+
+        json_str = '{"aGe": "30", "cIty": "New York"}'
+        required_fields = ['AgE', 'city']
+        keywords = ['30', 'new']
+        mock_callback = mock.Mock()
         parse_json(json_str, required_fields, keywords, mock_callback)
         expected_calls = []
         self.assertEqual(expected_calls, mock_callback.mock_calls)
@@ -130,10 +142,9 @@ class TestParseJSON(unittest.TestCase):
         required_fields = ['age', 'city']
         keywords = ['City']
         mock_callback = mock.Mock()
-
         parse_json(json_str, required_fields, keywords, mock_callback)
         expected_calls = [
-             mock.call('City')
+             mock.call("age", "City")
         ]
         self.assertEqual(expected_calls, mock_callback.mock_calls)
 
@@ -141,11 +152,25 @@ class TestParseJSON(unittest.TestCase):
         required_fields = ['age', 'city']
         keywords = ['city', 'new']
         mock_callback = mock.Mock()
-
         parse_json(json_str, required_fields, keywords, mock_callback)
         expected_calls = [
-            mock.call('city'),
-            mock.call('new'),
+            mock.call("age", "city"),
+            mock.call("city", 'new'),
+        ]
+        self.assertEqual(expected_calls.sort(), mock_callback.mock_calls.sort())
+
+        json_str = '{"age": "city ON BridGE", "city": "New York no OLD York"}'
+        required_fields = ['age', 'city']
+        keywords = ['city', 'new', 'bridge', 'oLd', 'NO', 'yOrK']
+        mock_callback = mock.Mock()
+        parse_json(json_str, required_fields, keywords, mock_callback)
+        expected_calls = [
+            mock.call("age", "city"),
+            mock.call("age", "bridge"),
+            mock.call("city", 'new'),
+            mock.call("city", 'yOrK'),
+            mock.call("city", 'oLd'),
+            mock.call("city", 'NO'),
         ]
         self.assertEqual(expected_calls.sort(), mock_callback.mock_calls.sort())
 
@@ -154,7 +179,6 @@ class TestParseJSON(unittest.TestCase):
         required_fields = ['age', 'city']
         keywords = ['30']
         mock_callback = mock.Mock()
-
         parse_json(json_str, required_fields, keywords, mock_callback)
         expected_calls = []
         self.assertEqual(expected_calls, mock_callback.mock_calls)
@@ -163,10 +187,35 @@ class TestParseJSON(unittest.TestCase):
         required_fields = ['age', 'city']
         keywords = ['30', 'new']
         mock_callback = mock.Mock()
-
         parse_json(json_str, required_fields, keywords, mock_callback)
         expected_calls = []
         self.assertEqual(expected_calls, mock_callback.mock_calls)
+
+    def test_several_found_keywords_and_required_field(self):
+        json_str = '{"age": "30 hello test", "city": "New York and heLLO juiCe"}'
+        required_fields = ['age', 'city']
+        keywords = ['30', 'Hello', 'juice']
+        mock_callback = mock.Mock()
+        parse_json(json_str, required_fields, keywords, mock_callback)
+        expected_calls = [
+            mock.call("age", "30"),
+            mock.call("age", "Hello"),
+            mock.call("city", 'Hello'),
+            mock.call("city", 'juice'),
+        ]
+        self.assertEqual(expected_calls.sort(), mock_callback.mock_calls.sort())
+
+        json_str = '{"age": "30 hello test", "city": "New York"}'
+        required_fields = ['age', 'city']
+        keywords = ['30', 'Hello', 'juice', 'test']
+        mock_callback = mock.Mock()
+        parse_json(json_str, required_fields, keywords, mock_callback)
+        expected_calls = [
+            mock.call("age", "30"),
+            mock.call("age", "Hello"),
+            mock.call("age", "test"),
+        ]
+        self.assertEqual(expected_calls.sort(), mock_callback.mock_calls.sort())
 
 
 if __name__ == '__main__':

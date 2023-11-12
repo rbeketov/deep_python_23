@@ -30,7 +30,7 @@ class JSONGenerator:
                 # и считаем их вхождение в сгениррированную строку
                 for word in words:
                     if word in value.split():
-                        callback_info[word] += 1
+                        callback_info[(key, word)] += 1
 
                 # хотим с вероятностью p_w добавить слово из новой строки
                 # в set для поиска, поэтому идём по строке
@@ -43,7 +43,7 @@ class JSONGenerator:
                             words.add(word)
                             for key_ in keys:
                                 if word in json_data[key_].split():
-                                    callback_info[word] += 1
+                                    callback_info[(key_, word)] += 1
 
         return json_data, keys, words, callback_info
 
