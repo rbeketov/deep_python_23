@@ -1,19 +1,21 @@
+from itertools import tee
 from typing import List
+from typing import Iterable
 
 TYPE_ERROR_MESSAGE_ARIFMETIC = "Ожидается объект типа List[int] или CustomList[int]"
 TYPE_ERROR_MESSAGE_COMPARE = "Ожидается объект типа CustomList[int]"
-TYPE_ERROR_MESSAGE_INIT = "Ожидается объект типа List[int]"
+TYPE_ERROR_MESSAGE_NOT_ITERABLE = "Ожидается итерируемый объект"
+TYPE_ERROR_MESSAGE_ONLY_INT = "Ожидается, что итерируемый объект имеет объекты типа int"
 
 
-class CustomList(List[int]):
-    def __init__(self, input_list: List[int]):
-        try:
-            self.__check_correct_type_for_arithmetic(input_list)
-        except TypeError as exc:
-            raise TypeError(TYPE_ERROR_MESSAGE_INIT) from exc
-        if isinstance(input_list, CustomList):
-            raise TypeError(TYPE_ERROR_MESSAGE_INIT)
-        super().__init__(input_list)
+class CustomList(list):
+    def __init__(self, input_list: Iterable[int]):
+        if not isinstance(input_list, Iterable):
+            raise TypeError(TYPE_ERROR_MESSAGE_NOT_ITERABLE)
+        copy_iter_input_list, input_list = tee(input_list)
+        if not all(isinstance(item, int) for item in input_list):
+            raise TypeError(TYPE_ERROR_MESSAGE_ONLY_INT)
+        super().__init__(copy_iter_input_list)
 
     def __add__(self, other: List[int]) -> 'CustomList':
         self.__check_correct_type_for_arithmetic(other)
@@ -66,7 +68,7 @@ class CustomList(List[int]):
         return not self.__lt__(other)
 
     def __str__(self) -> str:
-        return f"{str(str(list(self)))}\nСумма элементов списка = {sum(self)}"
+        return f"{super().__str__()}\nСумма элементов списка = {sum(self)}"
 
     def _get_sum(self) -> int:
         return sum(self)
