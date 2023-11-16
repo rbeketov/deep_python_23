@@ -8,7 +8,7 @@ from custom_list import TYPE_ERROR_MESSAGE_NOT_ITERABLE
 
 
 class TestCustomList(unittest.TestCase):
-    def trst_correct_create(self):
+    def test_correct_create(self):
         list_ = CustomList([1, 2, 3, 4, 5])
         self.assertIsInstance(list_, CustomList)
 
