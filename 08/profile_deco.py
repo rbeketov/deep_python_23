@@ -3,11 +3,12 @@ import io
 import pstats
 from typing import Any
 
+
 def profile_deco(func):
     class Wraper:
         def __init__(self) -> None:
             self.profiler = cProfile.Profile()
- 
+
         def __call__(self, *args: Any, **kwargs: Any) -> Any:
             self.profiler.enable()
             res = func(*args, **kwargs)
@@ -24,13 +25,13 @@ def profile_deco(func):
 
 
 @profile_deco
-def add(a, b):
-    return a + b
+def add(a_atr, b_atr):
+    return a_atr + b_atr
 
 
 @profile_deco
-def sub(a, b):
-    return a - b
+def sub(a_atr, b_atr):
+    return a_atr - b_atr
 
 
 if __name__ == "__main__":

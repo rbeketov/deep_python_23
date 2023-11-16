@@ -7,8 +7,10 @@ import pstats
 from memory_profiler import profile
 from prettytable import PrettyTable
 
+
 class FirstAtributeObject:
     name_class = "FirstAtributeObject"
+
     def __init__(self,
                  number: int) -> None:
         self.number = {"Name": number,
@@ -17,12 +19,14 @@ class FirstAtributeObject:
 
 class SecondAtributeObject:
     name_class = "SecondAtributeObject"
+
     def __init__(self) -> None:
         self.number = ["Second", "atribute", "object", "this"]
 
 
 class ThirdAtributeObject:
     name_class = "ThirdAtributeObject"
+
     def __init__(self,
                  number: str) -> None:
         self.number = number*10
@@ -40,6 +44,7 @@ class SimpleObject:
 
 class SlotsObject:
     __slots__ = ("object_1", "object_2", "object_3")
+
     def __init__(self,
                  obj_1: FirstAtributeObject,
                  obj_2: SecondAtributeObject,
@@ -91,14 +96,19 @@ def test_efficiency_time(class_: any,
     # замер времени создания
     times_create = []
     for _ in range(num_iter):
-        atribute_objects = [(FirstAtributeObject(i),
-                             SecondAtributeObject(),
-                             ThirdAtributeObject(str(i)))
-                             for i in range(10_000, num_object+10_000)
+        atribute_objects = [
+            (
+                FirstAtributeObject(i),
+                SecondAtributeObject(),
+                ThirdAtributeObject(str(i))
+            )
+            for i in range(10_000, num_object+10_000)
         ]
+
         time_start = time.time()
-        objects = [class_(first, second, third)
-                   for first, second, third in atribute_objects
+        objects = [
+            class_(first, second, third)
+            for first, second, third in atribute_objects
         ]
         time_end = time.time()
         times_create.append(time_end - time_start)
@@ -107,26 +117,30 @@ def test_efficiency_time(class_: any,
         for obj in atribute_objects:
             del obj
     times_create_mean = sum(times_create) / float(len(times_create))
-    atribute_objects = [(FirstAtributeObject(i),
-                         SecondAtributeObject(),
-                         ThirdAtributeObject(str(i)))
-                         for i in range(10_000, num_object+10_000)
+    atribute_objects = [
+        (
+            FirstAtributeObject(i),
+            SecondAtributeObject(),
+            ThirdAtributeObject(str(i))
+        )
+        for i in range(10_000, num_object+10_000)
     ]
-    objects = [class_(first, second, third)
-               for first, second, third in atribute_objects
+    objects = [
+        class_(first, second, third)
+        for first, second, third in atribute_objects
     ]
     # замер времени чтения/изменения атрибутов
     times_edit = []
-    
+
     if isinstance(objects[0], WeakrefObject):
-        for start_pos in range(2_000, num_iter + 2_000): # избегаем кэшируемых объектов
+        for start_pos in range(2_000, num_iter + 2_000):  # избегаем кэшируемых объектов
             time_start = time.time()
             for i, obj in enumerate(objects, start=start_pos):
                 obj = processed_object_weakref(obj, i)
             time_end = time.time()
             times_edit.append(time_end - time_start)
     else:
-        for start_pos in range(2_000, num_iter + 2_000): # избегаем кэшируемых объектов
+        for start_pos in range(2_000, num_iter + 2_000):  # избегаем кэшируемых объектов
             time_start = time.time()
             for i, obj in enumerate(objects, start=start_pos):
                 obj = processed_object_simple(obj, i)
@@ -140,13 +154,18 @@ def test_efficiency_time(class_: any,
 @profile
 def test_efficiency_memory(class_: any,
                            num_object: int):
-    atribute_objects = [(FirstAtributeObject(i),
-                         SecondAtributeObject(),
-                         ThirdAtributeObject(str(i)))
-                         for i in range(10_000, num_object+10_000)
+    atribute_objects = [
+        (
+            FirstAtributeObject(i),
+            SecondAtributeObject(),
+            ThirdAtributeObject(str(i))
+        )
+        for i in range(10_000, num_object+10_000)
     ]
-    objects = [class_(first, second, third)
-               for first, second, third in atribute_objects
+
+    objects = [
+        class_(first, second, third)
+        for first, second, third in atribute_objects
     ]
     if isinstance(objects[0], WeakrefObject):
         for i, obj in enumerate(objects):
@@ -154,23 +173,29 @@ def test_efficiency_memory(class_: any,
     else:
         for i, obj in enumerate(objects):
             obj = processed_object_simple(obj, i)
-        
+
 
 def main():
-    NUM_ITER = 10
-    NUM_OBJECT = 1_000_000
+    num_iter = 10
+    num_object = 1_000_000
 
     profiler = cProfile.Profile()
 
     profiler.enable()
-    tcrete_simple, tedit_simple = test_efficiency_time(class_=SimpleObject, num_iter=NUM_ITER, num_object=NUM_OBJECT)
-    tcrete_slots, tedit_slots = test_efficiency_time(class_=SlotsObject, num_iter=NUM_ITER, num_object=NUM_OBJECT)
-    tcrete_weakref, tedit_weakref = test_efficiency_time(class_=WeakrefObject, num_iter=NUM_ITER, num_object=NUM_OBJECT)
+    tcrete_simple, tedit_simple = test_efficiency_time(class_=SimpleObject,
+                                                       num_iter=num_iter,
+                                                       num_object=num_object)
+    tcrete_slots, tedit_slots = test_efficiency_time(class_=SlotsObject,
+                                                     num_iter=num_iter,
+                                                     num_object=num_object)
+    tcrete_weakref, tedit_weakref = test_efficiency_time(class_=WeakrefObject,
+                                                         num_iter=num_iter,
+                                                         num_object=num_object)
     profiler.disable()
 
-    test_efficiency_memory(class_=SimpleObject, num_object=NUM_OBJECT)
-    test_efficiency_memory(class_=SlotsObject, num_object=NUM_OBJECT)
-    test_efficiency_memory(class_=WeakrefObject, num_object=NUM_OBJECT)
+    test_efficiency_memory(class_=SimpleObject, num_object=num_object)
+    test_efficiency_memory(class_=SlotsObject, num_object=num_object)
+    test_efficiency_memory(class_=WeakrefObject, num_object=num_object)
 
     out = io.StringIO()
     stats = pstats.Stats(profiler, stream=out)
@@ -178,11 +203,17 @@ def main():
 
     table = PrettyTable()
     table.field_names = ["", "simple", "slots", "weakref"]
-    table.add_row(["Время создания", f"{tcrete_simple:.2f}", f"{tcrete_slots:.2f}", f"{tcrete_weakref:.2f}"])
-    table.add_row(["Время изменения/чтения", f"{tedit_simple:.2f}", f"{tedit_slots:.2f}", f"{tedit_weakref:.2f}"])
+    table.add_row(["Время создания",
+                   f"{tcrete_simple:.2f}",
+                   f"{tcrete_slots:.2f}",
+                   f"{tcrete_weakref:.2f}"])
+    table.add_row(["Время изменения/чтения",
+                   f"{tedit_simple:.2f}",
+                   f"{tedit_slots:.2f}",
+                   f"{tedit_weakref:.2f}"])
     print("======ВРЕМЕННЫЕ ЗАМЕРЫ======")
-    print(f"Количество запусков: {NUM_ITER}")
-    print(f"Количество экземпляров класса: {NUM_OBJECT}")
+    print(f"Количество запусков: {num_iter}")
+    print(f"Количество экземпляров класса: {num_object}")
     print(table)
 
     print("======ПРОФИЛИРОВАНИЕ======")
