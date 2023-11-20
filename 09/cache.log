@@ -1,0 +1,650 @@
+2023-11-20 15:33:00,148	INFO	root	LRUCache was created, size = 3
+2023-11-20 15:33:00,148	INFO	root	Trying add key = '1' in cache
+2023-11-20 15:33:00,148	DEBUG	root	Attempt to create ListNode with key = '1' and value = 'one'
+2023-11-20 15:33:00,148	DEBUG	root	Created successfully ListNode with key = '1' and value = 'one' 
+2023-11-20 15:33:00,148	DEBUG	root	Attempt to insert ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:33:00,148	INFO	root	key = '1' increased in priority
+2023-11-20 15:33:00,148	INFO	root	Added successfully key = '1' in cache
+2023-11-20 15:33:00,149	DEBUG	root	Attempt to delete ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:33:00,149	INFO	root	key = '1' deleted from cache
+2023-11-20 15:33:00,149	DEBUG	root	Attempt to insert ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:33:00,149	INFO	root	key = '1' increased in priority
+2023-11-20 15:33:00,149	INFO	root	'get' with key = '1' executed successfully
+2023-11-20 15:33:00,149	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:33:00,149	INFO	root	Trying add key = '2' in cache
+2023-11-20 15:33:00,149	DEBUG	root	Attempt to create ListNode with key = '2' and value = 'two'
+2023-11-20 15:33:00,149	DEBUG	root	Created successfully ListNode with key = '2' and value = 'two' 
+2023-11-20 15:33:00,149	DEBUG	root	Attempt to insert ListNode with key = '2', the node is located between 'newest' and '1'
+2023-11-20 15:33:00,149	INFO	root	key = '2' increased in priority
+2023-11-20 15:33:00,149	INFO	root	Added successfully key = '2' in cache
+2023-11-20 15:33:00,149	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:33:00,149	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'three'
+2023-11-20 15:33:00,149	DEBUG	root	Created successfully ListNode with key = '3' and value = 'three' 
+2023-11-20 15:33:00,149	DEBUG	root	Attempt to insert ListNode with key = '3', the node is located between 'newest' and '2'
+2023-11-20 15:33:00,149	INFO	root	key = '3' increased in priority
+2023-11-20 15:33:00,149	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:33:00,149	INFO	root	Trying add key = '4' in cache
+2023-11-20 15:33:00,149	DEBUG	root	Attempt to create ListNode with key = '4' and value = 'four'
+2023-11-20 15:33:00,149	DEBUG	root	Created successfully ListNode with key = '4' and value = 'four' 
+2023-11-20 15:33:00,149	DEBUG	root	Attempt to insert ListNode with key = '4', the node is located between 'newest' and '3'
+2023-11-20 15:33:00,149	INFO	root	key = '4' increased in priority
+2023-11-20 15:33:00,149	INFO	root	Added successfully key = '4' in cache
+2023-11-20 15:33:00,149	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '1'
+2023-11-20 15:33:00,149	DEBUG	root	Attempt to delete ListNode with key = '1', the node is located between '2' and 'oldest'
+2023-11-20 15:33:00,149	INFO	root	key = '1' deleted from cache
+2023-11-20 15:33:00,149	ERROR	root	Requested key = '1' does not exist in cache
+2023-11-20 15:33:00,149	INFO	root	Trying add key = '5' in cache
+2023-11-20 15:33:00,149	DEBUG	root	Attempt to create ListNode with key = '5' and value = 'five'
+2023-11-20 15:33:00,149	DEBUG	root	Created successfully ListNode with key = '5' and value = 'five' 
+2023-11-20 15:33:00,149	DEBUG	root	Attempt to insert ListNode with key = '5', the node is located between 'newest' and '4'
+2023-11-20 15:33:00,149	INFO	root	key = '5' increased in priority
+2023-11-20 15:33:00,149	INFO	root	Added successfully key = '5' in cache
+2023-11-20 15:33:00,149	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '2'
+2023-11-20 15:33:00,149	DEBUG	root	Attempt to delete ListNode with key = '2', the node is located between '3' and 'oldest'
+2023-11-20 15:33:00,149	INFO	root	key = '2' deleted from cache
+2023-11-20 15:33:00,149	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:33:00,149	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:33:00,149	INFO	root	key = '3' is added that is already in cache
+2023-11-20 15:33:00,149	DEBUG	root	Attempt to delete ListNode with key = '3', the node is located between '4' and 'oldest'
+2023-11-20 15:33:00,149	INFO	root	key = '3' deleted from cache
+2023-11-20 15:33:00,149	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'new_three'
+2023-11-20 15:33:00,149	DEBUG	root	Created successfully ListNode with key = '3' and value = 'new_three' 
+2023-11-20 15:33:00,149	DEBUG	root	Attempt to insert ListNode with key = '3', the node is located between 'newest' and '5'
+2023-11-20 15:33:00,149	INFO	root	key = '3' increased in priority
+2023-11-20 15:33:00,149	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:33:00,149	INFO	root	Trying add key = '6' in cache
+2023-11-20 15:33:00,149	DEBUG	root	Attempt to create ListNode with key = '6' and value = 'six'
+2023-11-20 15:33:00,149	DEBUG	root	Created successfully ListNode with key = '6' and value = 'six' 
+2023-11-20 15:33:00,149	DEBUG	root	Attempt to insert ListNode with key = '6', the node is located between 'newest' and '3'
+2023-11-20 15:33:00,150	INFO	root	key = '6' increased in priority
+2023-11-20 15:33:00,150	INFO	root	Added successfully key = '6' in cache
+2023-11-20 15:33:00,150	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '4'
+2023-11-20 15:33:00,150	DEBUG	root	Attempt to delete ListNode with key = '4', the node is located between '5' and 'oldest'
+2023-11-20 15:33:00,150	INFO	root	key = '4' deleted from cache
+2023-11-20 15:33:00,150	ERROR	root	Requested key = '4' does not exist in cache
+2023-11-20 15:33:00,150	ERROR	root	Requested key = '7' does not exist in cache
+2023-11-20 15:34:30,877	INFO	root	LRUCache was created, size = 3
+2023-11-20 15:34:30,878	INFO	root	Trying add key = '1' in cache
+2023-11-20 15:34:30,878	DEBUG	root	Attempt to create ListNode with key = '1' and value = 'one'
+2023-11-20 15:34:30,878	DEBUG	root	Created successfully ListNode with key = '1' and value = 'one' 
+2023-11-20 15:34:30,878	DEBUG	root	Attempt to insert ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:34:30,878	INFO	root	key = '1' increased in priority
+2023-11-20 15:34:30,878	INFO	root	Added successfully key = '1' in cache
+2023-11-20 15:34:30,878	DEBUG	root	Attempt to delete ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:34:30,878	INFO	root	key = '1' deleted from cache
+2023-11-20 15:34:30,878	DEBUG	root	Attempt to insert ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:34:30,878	INFO	root	key = '1' increased in priority
+2023-11-20 15:34:30,878	INFO	root	'get' with key = '1' executed successfully
+2023-11-20 15:34:30,878	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:34:30,878	INFO	root	Trying add key = '2' in cache
+2023-11-20 15:34:30,878	DEBUG	root	Attempt to create ListNode with key = '2' and value = 'two'
+2023-11-20 15:34:30,878	DEBUG	root	Created successfully ListNode with key = '2' and value = 'two' 
+2023-11-20 15:34:30,878	DEBUG	root	Attempt to insert ListNode with key = '2', the node is located between 'newest' and '1'
+2023-11-20 15:34:30,878	INFO	root	key = '2' increased in priority
+2023-11-20 15:34:30,878	INFO	root	Added successfully key = '2' in cache
+2023-11-20 15:34:30,878	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:34:30,878	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'three'
+2023-11-20 15:34:30,878	DEBUG	root	Created successfully ListNode with key = '3' and value = 'three' 
+2023-11-20 15:34:30,878	DEBUG	root	Attempt to insert ListNode with key = '3', the node is located between 'newest' and '2'
+2023-11-20 15:34:30,878	INFO	root	key = '3' increased in priority
+2023-11-20 15:34:30,878	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:34:30,878	INFO	root	Trying add key = '4' in cache
+2023-11-20 15:34:30,878	DEBUG	root	Attempt to create ListNode with key = '4' and value = 'four'
+2023-11-20 15:34:30,878	DEBUG	root	Created successfully ListNode with key = '4' and value = 'four' 
+2023-11-20 15:34:30,878	DEBUG	root	Attempt to insert ListNode with key = '4', the node is located between 'newest' and '3'
+2023-11-20 15:34:30,878	INFO	root	key = '4' increased in priority
+2023-11-20 15:34:30,878	INFO	root	Added successfully key = '4' in cache
+2023-11-20 15:34:30,878	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '1'
+2023-11-20 15:34:30,878	DEBUG	root	Attempt to delete ListNode with key = '1', the node is located between '2' and 'oldest'
+2023-11-20 15:34:30,878	INFO	root	key = '1' deleted from cache
+2023-11-20 15:34:30,878	ERROR	root	Requested key = '1' does not exist in cache
+2023-11-20 15:34:30,878	INFO	root	Trying add key = '5' in cache
+2023-11-20 15:34:30,878	DEBUG	root	Attempt to create ListNode with key = '5' and value = 'five'
+2023-11-20 15:34:30,878	DEBUG	root	Created successfully ListNode with key = '5' and value = 'five' 
+2023-11-20 15:34:30,878	DEBUG	root	Attempt to insert ListNode with key = '5', the node is located between 'newest' and '4'
+2023-11-20 15:34:30,878	INFO	root	key = '5' increased in priority
+2023-11-20 15:34:30,878	INFO	root	Added successfully key = '5' in cache
+2023-11-20 15:34:30,878	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '2'
+2023-11-20 15:34:30,878	DEBUG	root	Attempt to delete ListNode with key = '2', the node is located between '3' and 'oldest'
+2023-11-20 15:34:30,879	INFO	root	key = '2' deleted from cache
+2023-11-20 15:34:30,879	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:34:30,879	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:34:30,879	INFO	root	key = '3' is added that is already in cache
+2023-11-20 15:34:30,879	DEBUG	root	Attempt to delete ListNode with key = '3', the node is located between '4' and 'oldest'
+2023-11-20 15:34:30,879	INFO	root	key = '3' deleted from cache
+2023-11-20 15:34:30,879	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'new_three'
+2023-11-20 15:34:30,879	DEBUG	root	Created successfully ListNode with key = '3' and value = 'new_three' 
+2023-11-20 15:34:30,879	DEBUG	root	Attempt to insert ListNode with key = '3', the node is located between 'newest' and '5'
+2023-11-20 15:34:30,879	INFO	root	key = '3' increased in priority
+2023-11-20 15:34:30,879	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:34:30,879	INFO	root	Trying add key = '6' in cache
+2023-11-20 15:34:30,879	DEBUG	root	Attempt to create ListNode with key = '6' and value = 'six'
+2023-11-20 15:34:30,879	DEBUG	root	Created successfully ListNode with key = '6' and value = 'six' 
+2023-11-20 15:34:30,879	DEBUG	root	Attempt to insert ListNode with key = '6', the node is located between 'newest' and '3'
+2023-11-20 15:34:30,879	INFO	root	key = '6' increased in priority
+2023-11-20 15:34:30,879	INFO	root	Added successfully key = '6' in cache
+2023-11-20 15:34:30,879	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '4'
+2023-11-20 15:34:30,879	DEBUG	root	Attempt to delete ListNode with key = '4', the node is located between '5' and 'oldest'
+2023-11-20 15:34:30,879	INFO	root	key = '4' deleted from cache
+2023-11-20 15:34:30,879	ERROR	root	Requested key = '4' does not exist in cache
+2023-11-20 15:34:30,879	ERROR	root	Requested key = '7' does not exist in cache
+2023-11-20 15:34:41,094	INFO	root	LRUCache was created, size = 3
+2023-11-20 15:34:41,094	INFO	root	Trying add key = '1' in cache
+2023-11-20 15:34:41,094	DEBUG	root	Attempt to create ListNode with key = '1' and value = 'one'
+2023-11-20 15:34:41,095	DEBUG	root	Created successfully ListNode with key = '1' and value = 'one' 
+2023-11-20 15:34:41,095	DEBUG	root	Attempt to insert ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:34:41,095	INFO	root	key = '1' increased in priority
+2023-11-20 15:34:41,095	INFO	root	Added successfully key = '1' in cache
+2023-11-20 15:34:41,095	DEBUG	root	Attempt to delete ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:34:41,095	INFO	root	key = '1' deleted from cache
+2023-11-20 15:34:41,095	DEBUG	root	Attempt to insert ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:34:41,095	INFO	root	key = '1' increased in priority
+2023-11-20 15:34:41,095	INFO	root	'get' with key = '1' executed successfully
+2023-11-20 15:34:41,095	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:34:41,095	INFO	root	Trying add key = '2' in cache
+2023-11-20 15:34:41,095	DEBUG	root	Attempt to create ListNode with key = '2' and value = 'two'
+2023-11-20 15:34:41,095	DEBUG	root	Created successfully ListNode with key = '2' and value = 'two' 
+2023-11-20 15:34:41,095	DEBUG	root	Attempt to insert ListNode with key = '2', the node is located between 'newest' and '1'
+2023-11-20 15:34:41,095	INFO	root	key = '2' increased in priority
+2023-11-20 15:34:41,095	INFO	root	Added successfully key = '2' in cache
+2023-11-20 15:34:41,095	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:34:41,095	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'three'
+2023-11-20 15:34:41,095	DEBUG	root	Created successfully ListNode with key = '3' and value = 'three' 
+2023-11-20 15:34:41,095	DEBUG	root	Attempt to insert ListNode with key = '3', the node is located between 'newest' and '2'
+2023-11-20 15:34:41,095	INFO	root	key = '3' increased in priority
+2023-11-20 15:34:41,095	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:34:41,095	INFO	root	Trying add key = '4' in cache
+2023-11-20 15:34:41,095	DEBUG	root	Attempt to create ListNode with key = '4' and value = 'four'
+2023-11-20 15:34:41,095	DEBUG	root	Created successfully ListNode with key = '4' and value = 'four' 
+2023-11-20 15:34:41,095	DEBUG	root	Attempt to insert ListNode with key = '4', the node is located between 'newest' and '3'
+2023-11-20 15:34:41,095	INFO	root	key = '4' increased in priority
+2023-11-20 15:34:41,095	INFO	root	Added successfully key = '4' in cache
+2023-11-20 15:34:41,095	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '1'
+2023-11-20 15:34:41,095	DEBUG	root	Attempt to delete ListNode with key = '1', the node is located between '2' and 'oldest'
+2023-11-20 15:34:41,095	INFO	root	key = '1' deleted from cache
+2023-11-20 15:34:41,095	ERROR	root	Requested key = '1' does not exist in cache
+2023-11-20 15:34:41,095	INFO	root	Trying add key = '5' in cache
+2023-11-20 15:34:41,095	DEBUG	root	Attempt to create ListNode with key = '5' and value = 'five'
+2023-11-20 15:34:41,095	DEBUG	root	Created successfully ListNode with key = '5' and value = 'five' 
+2023-11-20 15:34:41,095	DEBUG	root	Attempt to insert ListNode with key = '5', the node is located between 'newest' and '4'
+2023-11-20 15:34:41,095	INFO	root	key = '5' increased in priority
+2023-11-20 15:34:41,095	INFO	root	Added successfully key = '5' in cache
+2023-11-20 15:34:41,095	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '2'
+2023-11-20 15:34:41,095	DEBUG	root	Attempt to delete ListNode with key = '2', the node is located between '3' and 'oldest'
+2023-11-20 15:34:41,095	INFO	root	key = '2' deleted from cache
+2023-11-20 15:34:41,095	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:34:41,095	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:34:41,095	INFO	root	key = '3' is added that is already in cache
+2023-11-20 15:34:41,095	DEBUG	root	Attempt to delete ListNode with key = '3', the node is located between '4' and 'oldest'
+2023-11-20 15:34:41,095	INFO	root	key = '3' deleted from cache
+2023-11-20 15:34:41,095	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'new_three'
+2023-11-20 15:34:41,096	DEBUG	root	Created successfully ListNode with key = '3' and value = 'new_three' 
+2023-11-20 15:34:41,096	DEBUG	root	Attempt to insert ListNode with key = '3', the node is located between 'newest' and '5'
+2023-11-20 15:34:41,096	INFO	root	key = '3' increased in priority
+2023-11-20 15:34:41,096	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:34:41,096	INFO	root	Trying add key = '6' in cache
+2023-11-20 15:34:41,096	DEBUG	root	Attempt to create ListNode with key = '6' and value = 'six'
+2023-11-20 15:34:41,096	DEBUG	root	Created successfully ListNode with key = '6' and value = 'six' 
+2023-11-20 15:34:41,096	DEBUG	root	Attempt to insert ListNode with key = '6', the node is located between 'newest' and '3'
+2023-11-20 15:34:41,096	INFO	root	key = '6' increased in priority
+2023-11-20 15:34:41,096	INFO	root	Added successfully key = '6' in cache
+2023-11-20 15:34:41,096	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '4'
+2023-11-20 15:34:41,096	DEBUG	root	Attempt to delete ListNode with key = '4', the node is located between '5' and 'oldest'
+2023-11-20 15:34:41,096	INFO	root	key = '4' deleted from cache
+2023-11-20 15:34:41,096	ERROR	root	Requested key = '4' does not exist in cache
+2023-11-20 15:34:41,096	ERROR	root	Requested key = '7' does not exist in cache
+2023-11-20 15:34:55,223	INFO	root	LRUCache was created, size = 3
+2023-11-20 15:34:55,223	INFO	root	Trying add key = '1' in cache
+2023-11-20 15:34:55,223	DEBUG	root	Attempt to create ListNode with key = '1' and value = 'one'
+2023-11-20 15:34:55,224	DEBUG	root	Created successfully ListNode with key = '1' and value = 'one' 
+2023-11-20 15:34:55,224	DEBUG	root	Attempt to insert ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:34:55,224	INFO	root	key = '1' increased in priority
+2023-11-20 15:34:55,224	INFO	root	Added successfully key = '1' in cache
+2023-11-20 15:34:55,224	DEBUG	root	Attempt to delete ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:34:55,224	INFO	root	key = '1' deleted from cache
+2023-11-20 15:34:55,224	DEBUG	root	Attempt to insert ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:34:55,224	INFO	root	key = '1' increased in priority
+2023-11-20 15:34:55,224	INFO	root	'get' with key = '1' executed successfully
+2023-11-20 15:34:55,224	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:34:55,224	INFO	root	Trying add key = '2' in cache
+2023-11-20 15:34:55,224	DEBUG	root	Attempt to create ListNode with key = '2' and value = 'two'
+2023-11-20 15:34:55,224	DEBUG	root	Created successfully ListNode with key = '2' and value = 'two' 
+2023-11-20 15:34:55,224	DEBUG	root	Attempt to insert ListNode with key = '2', the node is located between 'newest' and '1'
+2023-11-20 15:34:55,224	INFO	root	key = '2' increased in priority
+2023-11-20 15:34:55,224	INFO	root	Added successfully key = '2' in cache
+2023-11-20 15:34:55,224	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:34:55,224	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'three'
+2023-11-20 15:34:55,224	DEBUG	root	Created successfully ListNode with key = '3' and value = 'three' 
+2023-11-20 15:34:55,224	DEBUG	root	Attempt to insert ListNode with key = '3', the node is located between 'newest' and '2'
+2023-11-20 15:34:55,224	INFO	root	key = '3' increased in priority
+2023-11-20 15:34:55,224	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:34:55,224	INFO	root	Trying add key = '4' in cache
+2023-11-20 15:34:55,224	DEBUG	root	Attempt to create ListNode with key = '4' and value = 'four'
+2023-11-20 15:34:55,224	DEBUG	root	Created successfully ListNode with key = '4' and value = 'four' 
+2023-11-20 15:34:55,224	DEBUG	root	Attempt to insert ListNode with key = '4', the node is located between 'newest' and '3'
+2023-11-20 15:34:55,224	INFO	root	key = '4' increased in priority
+2023-11-20 15:34:55,224	INFO	root	Added successfully key = '4' in cache
+2023-11-20 15:34:55,224	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '1'
+2023-11-20 15:34:55,224	DEBUG	root	Attempt to delete ListNode with key = '1', the node is located between '2' and 'oldest'
+2023-11-20 15:34:55,224	INFO	root	key = '1' deleted from cache
+2023-11-20 15:34:55,224	ERROR	root	Requested key = '1' does not exist in cache
+2023-11-20 15:34:55,224	INFO	root	Trying add key = '5' in cache
+2023-11-20 15:34:55,224	DEBUG	root	Attempt to create ListNode with key = '5' and value = 'five'
+2023-11-20 15:34:55,224	DEBUG	root	Created successfully ListNode with key = '5' and value = 'five' 
+2023-11-20 15:34:55,224	DEBUG	root	Attempt to insert ListNode with key = '5', the node is located between 'newest' and '4'
+2023-11-20 15:34:55,224	INFO	root	key = '5' increased in priority
+2023-11-20 15:34:55,224	INFO	root	Added successfully key = '5' in cache
+2023-11-20 15:34:55,224	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '2'
+2023-11-20 15:34:55,224	DEBUG	root	Attempt to delete ListNode with key = '2', the node is located between '3' and 'oldest'
+2023-11-20 15:34:55,224	INFO	root	key = '2' deleted from cache
+2023-11-20 15:34:55,224	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:34:55,224	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:34:55,224	INFO	root	key = '3' is added that is already in cache
+2023-11-20 15:34:55,224	DEBUG	root	Attempt to delete ListNode with key = '3', the node is located between '4' and 'oldest'
+2023-11-20 15:34:55,224	INFO	root	key = '3' deleted from cache
+2023-11-20 15:34:55,224	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'new_three'
+2023-11-20 15:34:55,225	DEBUG	root	Created successfully ListNode with key = '3' and value = 'new_three' 
+2023-11-20 15:34:55,225	DEBUG	root	Attempt to insert ListNode with key = '3', the node is located between 'newest' and '5'
+2023-11-20 15:34:55,225	INFO	root	key = '3' increased in priority
+2023-11-20 15:34:55,225	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:34:55,225	INFO	root	Trying add key = '6' in cache
+2023-11-20 15:34:55,225	DEBUG	root	Attempt to create ListNode with key = '6' and value = 'six'
+2023-11-20 15:34:55,225	DEBUG	root	Created successfully ListNode with key = '6' and value = 'six' 
+2023-11-20 15:34:55,225	DEBUG	root	Attempt to insert ListNode with key = '6', the node is located between 'newest' and '3'
+2023-11-20 15:34:55,225	INFO	root	key = '6' increased in priority
+2023-11-20 15:34:55,225	INFO	root	Added successfully key = '6' in cache
+2023-11-20 15:34:55,225	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '4'
+2023-11-20 15:34:55,225	DEBUG	root	Attempt to delete ListNode with key = '4', the node is located between '5' and 'oldest'
+2023-11-20 15:34:55,225	INFO	root	key = '4' deleted from cache
+2023-11-20 15:34:55,225	ERROR	root	Requested key = '4' does not exist in cache
+2023-11-20 15:34:55,225	ERROR	root	Requested key = '7' does not exist in cache
+2023-11-20 15:35:08,284	INFO	root	LRUCache was created, size = 3
+2023-11-20 15:35:08,284	INFO	root	Trying add key = '1' in cache
+2023-11-20 15:35:08,284	DEBUG	root	Attempt to create ListNode with key = '1' and value = 'one'
+2023-11-20 15:35:08,284	DEBUG	root	Created successfully ListNode with key = '1' and value = 'one' 
+2023-11-20 15:35:08,284	DEBUG	root	Attempt to insert ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:35:08,284	INFO	root	key = '1' increased in priority
+2023-11-20 15:35:08,284	INFO	root	Added successfully key = '1' in cache
+2023-11-20 15:35:08,284	DEBUG	root	Attempt to delete ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:35:08,284	INFO	root	key = '1' deleted from cache
+2023-11-20 15:35:08,284	DEBUG	root	Attempt to insert ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:35:08,284	INFO	root	key = '1' increased in priority
+2023-11-20 15:35:08,284	INFO	root	'get' with key = '1' executed successfully
+2023-11-20 15:35:08,284	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:35:08,284	INFO	root	Trying add key = '2' in cache
+2023-11-20 15:35:08,284	DEBUG	root	Attempt to create ListNode with key = '2' and value = 'two'
+2023-11-20 15:35:08,284	DEBUG	root	Created successfully ListNode with key = '2' and value = 'two' 
+2023-11-20 15:35:08,284	DEBUG	root	Attempt to insert ListNode with key = '2', the node is located between 'newest' and '1'
+2023-11-20 15:35:08,284	INFO	root	key = '2' increased in priority
+2023-11-20 15:35:08,284	INFO	root	Added successfully key = '2' in cache
+2023-11-20 15:35:08,284	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:35:08,284	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'three'
+2023-11-20 15:35:08,284	DEBUG	root	Created successfully ListNode with key = '3' and value = 'three' 
+2023-11-20 15:35:08,285	DEBUG	root	Attempt to insert ListNode with key = '3', the node is located between 'newest' and '2'
+2023-11-20 15:35:08,285	INFO	root	key = '3' increased in priority
+2023-11-20 15:35:08,285	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:35:08,285	INFO	root	Trying add key = '4' in cache
+2023-11-20 15:35:08,285	DEBUG	root	Attempt to create ListNode with key = '4' and value = 'four'
+2023-11-20 15:35:08,285	DEBUG	root	Created successfully ListNode with key = '4' and value = 'four' 
+2023-11-20 15:35:08,285	DEBUG	root	Attempt to insert ListNode with key = '4', the node is located between 'newest' and '3'
+2023-11-20 15:35:08,285	INFO	root	key = '4' increased in priority
+2023-11-20 15:35:08,285	INFO	root	Added successfully key = '4' in cache
+2023-11-20 15:35:08,285	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '1'
+2023-11-20 15:35:08,285	DEBUG	root	Attempt to delete ListNode with key = '1', the node is located between '2' and 'oldest'
+2023-11-20 15:35:08,285	INFO	root	key = '1' deleted from cache
+2023-11-20 15:35:08,285	ERROR	root	Requested key = '1' does not exist in cache
+2023-11-20 15:35:08,285	INFO	root	Trying add key = '5' in cache
+2023-11-20 15:35:08,285	DEBUG	root	Attempt to create ListNode with key = '5' and value = 'five'
+2023-11-20 15:35:08,285	DEBUG	root	Created successfully ListNode with key = '5' and value = 'five' 
+2023-11-20 15:35:08,285	DEBUG	root	Attempt to insert ListNode with key = '5', the node is located between 'newest' and '4'
+2023-11-20 15:35:08,285	INFO	root	key = '5' increased in priority
+2023-11-20 15:35:08,285	INFO	root	Added successfully key = '5' in cache
+2023-11-20 15:35:08,285	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '2'
+2023-11-20 15:35:08,285	DEBUG	root	Attempt to delete ListNode with key = '2', the node is located between '3' and 'oldest'
+2023-11-20 15:35:08,285	INFO	root	key = '2' deleted from cache
+2023-11-20 15:35:08,285	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:35:08,285	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:35:08,285	INFO	root	key = '3' is added that is already in cache
+2023-11-20 15:35:08,285	DEBUG	root	Attempt to delete ListNode with key = '3', the node is located between '4' and 'oldest'
+2023-11-20 15:35:08,285	INFO	root	key = '3' deleted from cache
+2023-11-20 15:35:08,285	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'new_three'
+2023-11-20 15:35:08,285	DEBUG	root	Created successfully ListNode with key = '3' and value = 'new_three' 
+2023-11-20 15:35:08,285	DEBUG	root	Attempt to insert ListNode with key = '3', the node is located between 'newest' and '5'
+2023-11-20 15:35:08,285	INFO	root	key = '3' increased in priority
+2023-11-20 15:35:08,285	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:35:08,285	INFO	root	Trying add key = '6' in cache
+2023-11-20 15:35:08,285	DEBUG	root	Attempt to create ListNode with key = '6' and value = 'six'
+2023-11-20 15:35:08,285	DEBUG	root	Created successfully ListNode with key = '6' and value = 'six' 
+2023-11-20 15:35:08,285	DEBUG	root	Attempt to insert ListNode with key = '6', the node is located between 'newest' and '3'
+2023-11-20 15:35:08,285	INFO	root	key = '6' increased in priority
+2023-11-20 15:35:08,285	INFO	root	Added successfully key = '6' in cache
+2023-11-20 15:35:08,285	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '4'
+2023-11-20 15:35:08,285	DEBUG	root	Attempt to delete ListNode with key = '4', the node is located between '5' and 'oldest'
+2023-11-20 15:35:08,285	INFO	root	key = '4' deleted from cache
+2023-11-20 15:35:08,285	ERROR	root	Requested key = '4' does not exist in cache
+2023-11-20 15:35:08,285	ERROR	root	Requested key = '7' does not exist in cache
+2023-11-20 15:37:17,578	INFO	root	LRUCache was created, size = 3
+2023-11-20 15:37:17,578	INFO	root	Trying add key = '1' in cache
+2023-11-20 15:37:17,578	DEBUG	root	Attempt to create ListNode with key = '1' and value = 'one'
+2023-11-20 15:37:17,578	DEBUG	root	Created successfully ListNode with key = '1' and value = 'one' 
+2023-11-20 15:37:17,578	DEBUG	root	Attempt to insert ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:37:17,578	INFO	root	key = '1' increased in priority
+2023-11-20 15:37:17,578	INFO	root	Added successfully key = '1' in cache
+2023-11-20 15:37:17,578	DEBUG	root	Attempt to delete ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:37:17,578	INFO	root	key = '1' deleted from cache
+2023-11-20 15:37:17,578	DEBUG	root	Attempt to insert ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:37:17,578	INFO	root	key = '1' increased in priority
+2023-11-20 15:37:17,578	INFO	root	'get' with key = '1' executed successfully
+2023-11-20 15:37:17,578	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:37:17,578	INFO	root	Trying add key = '2' in cache
+2023-11-20 15:37:17,578	DEBUG	root	Attempt to create ListNode with key = '2' and value = 'two'
+2023-11-20 15:37:17,578	DEBUG	root	Created successfully ListNode with key = '2' and value = 'two' 
+2023-11-20 15:37:17,578	DEBUG	root	Attempt to insert ListNode with key = '2', the node is located between 'newest' and '1'
+2023-11-20 15:37:17,578	INFO	root	key = '2' increased in priority
+2023-11-20 15:37:17,578	INFO	root	Added successfully key = '2' in cache
+2023-11-20 15:37:17,578	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:37:17,579	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'three'
+2023-11-20 15:37:17,579	DEBUG	root	Created successfully ListNode with key = '3' and value = 'three' 
+2023-11-20 15:37:17,579	DEBUG	root	Attempt to insert ListNode with key = '3', the node is located between 'newest' and '2'
+2023-11-20 15:37:17,579	INFO	root	key = '3' increased in priority
+2023-11-20 15:37:17,579	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:37:17,579	INFO	root	Trying add key = '4' in cache
+2023-11-20 15:37:17,579	DEBUG	root	Attempt to create ListNode with key = '4' and value = 'four'
+2023-11-20 15:37:17,579	DEBUG	root	Created successfully ListNode with key = '4' and value = 'four' 
+2023-11-20 15:37:17,579	DEBUG	root	Attempt to insert ListNode with key = '4', the node is located between 'newest' and '3'
+2023-11-20 15:37:17,579	INFO	root	key = '4' increased in priority
+2023-11-20 15:37:17,579	INFO	root	Added successfully key = '4' in cache
+2023-11-20 15:37:17,579	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '1'
+2023-11-20 15:37:17,579	DEBUG	root	Attempt to delete ListNode with key = '1', the node is located between '2' and 'oldest'
+2023-11-20 15:37:17,579	INFO	root	key = '1' deleted from cache
+2023-11-20 15:37:17,579	ERROR	root	Requested key = '1' does not exist in cache
+2023-11-20 15:37:17,579	INFO	root	Trying add key = '5' in cache
+2023-11-20 15:37:17,579	DEBUG	root	Attempt to create ListNode with key = '5' and value = 'five'
+2023-11-20 15:37:17,579	DEBUG	root	Created successfully ListNode with key = '5' and value = 'five' 
+2023-11-20 15:37:17,579	DEBUG	root	Attempt to insert ListNode with key = '5', the node is located between 'newest' and '4'
+2023-11-20 15:37:17,579	INFO	root	key = '5' increased in priority
+2023-11-20 15:37:17,579	INFO	root	Added successfully key = '5' in cache
+2023-11-20 15:37:17,579	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '2'
+2023-11-20 15:37:17,579	DEBUG	root	Attempt to delete ListNode with key = '2', the node is located between '3' and 'oldest'
+2023-11-20 15:37:17,579	INFO	root	key = '2' deleted from cache
+2023-11-20 15:37:17,579	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:37:17,579	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:37:17,579	INFO	root	key = '3' is added that is already in cache
+2023-11-20 15:37:17,579	DEBUG	root	Attempt to delete ListNode with key = '3', the node is located between '4' and 'oldest'
+2023-11-20 15:37:17,579	INFO	root	key = '3' deleted from cache
+2023-11-20 15:37:17,579	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'new_three'
+2023-11-20 15:37:17,579	DEBUG	root	Created successfully ListNode with key = '3' and value = 'new_three' 
+2023-11-20 15:37:17,579	DEBUG	root	Attempt to insert ListNode with key = '3', the node is located between 'newest' and '5'
+2023-11-20 15:37:17,579	INFO	root	key = '3' increased in priority
+2023-11-20 15:37:17,579	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:37:17,579	INFO	root	Trying add key = '6' in cache
+2023-11-20 15:37:17,579	DEBUG	root	Attempt to create ListNode with key = '6' and value = 'six'
+2023-11-20 15:37:17,579	DEBUG	root	Created successfully ListNode with key = '6' and value = 'six' 
+2023-11-20 15:37:17,579	DEBUG	root	Attempt to insert ListNode with key = '6', the node is located between 'newest' and '3'
+2023-11-20 15:37:17,580	INFO	root	key = '6' increased in priority
+2023-11-20 15:37:17,580	INFO	root	Added successfully key = '6' in cache
+2023-11-20 15:37:17,580	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '4'
+2023-11-20 15:37:17,580	DEBUG	root	Attempt to delete ListNode with key = '4', the node is located between '5' and 'oldest'
+2023-11-20 15:37:17,580	INFO	root	key = '4' deleted from cache
+2023-11-20 15:37:17,580	ERROR	root	Requested key = '4' does not exist in cache
+2023-11-20 15:37:17,580	ERROR	root	Requested key = '7' does not exist in cache
+2023-11-20 15:37:27,990	INFO	root	LRUCache was created, size = 3
+2023-11-20 15:37:27,990	INFO	root	Trying add key = '1' in cache
+2023-11-20 15:37:27,990	DEBUG	root	Attempt to create ListNode with key = '1' and value = 'one'
+2023-11-20 15:37:27,990	DEBUG	root	Created successfully ListNode with key = '1' and value = 'one' 
+2023-11-20 15:37:27,990	DEBUG	root	Attempt to insert ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:37:27,990	INFO	root	key = '1' increased in priority
+2023-11-20 15:37:27,990	INFO	root	Added successfully key = '1' in cache
+2023-11-20 15:37:27,990	DEBUG	root	Attempt to delete ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:37:27,990	INFO	root	key = '1' deleted from cache
+2023-11-20 15:37:27,990	DEBUG	root	Attempt to insert ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:37:27,990	INFO	root	key = '1' increased in priority
+2023-11-20 15:37:27,990	INFO	root	'get' with key = '1' executed successfully
+2023-11-20 15:37:27,990	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:37:27,990	INFO	root	Trying add key = '2' in cache
+2023-11-20 15:37:27,990	DEBUG	root	Attempt to create ListNode with key = '2' and value = 'two'
+2023-11-20 15:37:27,990	DEBUG	root	Created successfully ListNode with key = '2' and value = 'two' 
+2023-11-20 15:37:27,990	DEBUG	root	Attempt to insert ListNode with key = '2', the node is located between 'newest' and '1'
+2023-11-20 15:37:27,990	INFO	root	key = '2' increased in priority
+2023-11-20 15:37:27,990	INFO	root	Added successfully key = '2' in cache
+2023-11-20 15:37:27,991	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:37:27,991	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'three'
+2023-11-20 15:37:27,991	DEBUG	root	Created successfully ListNode with key = '3' and value = 'three' 
+2023-11-20 15:37:27,991	DEBUG	root	Attempt to insert ListNode with key = '3', the node is located between 'newest' and '2'
+2023-11-20 15:37:27,991	INFO	root	key = '3' increased in priority
+2023-11-20 15:37:27,991	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:37:27,991	INFO	root	Trying add key = '4' in cache
+2023-11-20 15:37:27,991	DEBUG	root	Attempt to create ListNode with key = '4' and value = 'four'
+2023-11-20 15:37:27,991	DEBUG	root	Created successfully ListNode with key = '4' and value = 'four' 
+2023-11-20 15:37:27,991	DEBUG	root	Attempt to insert ListNode with key = '4', the node is located between 'newest' and '3'
+2023-11-20 15:37:27,991	INFO	root	key = '4' increased in priority
+2023-11-20 15:37:27,991	INFO	root	Added successfully key = '4' in cache
+2023-11-20 15:37:27,991	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '1'
+2023-11-20 15:37:27,991	DEBUG	root	Attempt to delete ListNode with key = '1', the node is located between '2' and 'oldest'
+2023-11-20 15:37:27,991	INFO	root	key = '1' deleted from cache
+2023-11-20 15:37:27,991	ERROR	root	Requested key = '1' does not exist in cache
+2023-11-20 15:37:27,991	INFO	root	Trying add key = '5' in cache
+2023-11-20 15:37:27,991	DEBUG	root	Attempt to create ListNode with key = '5' and value = 'five'
+2023-11-20 15:37:27,991	DEBUG	root	Created successfully ListNode with key = '5' and value = 'five' 
+2023-11-20 15:37:27,991	DEBUG	root	Attempt to insert ListNode with key = '5', the node is located between 'newest' and '4'
+2023-11-20 15:37:27,991	INFO	root	key = '5' increased in priority
+2023-11-20 15:37:27,991	INFO	root	Added successfully key = '5' in cache
+2023-11-20 15:37:27,991	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '2'
+2023-11-20 15:37:27,991	DEBUG	root	Attempt to delete ListNode with key = '2', the node is located between '3' and 'oldest'
+2023-11-20 15:37:27,991	INFO	root	key = '2' deleted from cache
+2023-11-20 15:37:27,991	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:37:27,991	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:37:27,991	INFO	root	key = '3' is added that is already in cache
+2023-11-20 15:37:27,991	DEBUG	root	Attempt to delete ListNode with key = '3', the node is located between '4' and 'oldest'
+2023-11-20 15:37:27,991	INFO	root	key = '3' deleted from cache
+2023-11-20 15:37:27,991	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'new_three'
+2023-11-20 15:37:27,991	DEBUG	root	Created successfully ListNode with key = '3' and value = 'new_three' 
+2023-11-20 15:37:27,991	DEBUG	root	Attempt to insert ListNode with key = '3', the node is located between 'newest' and '5'
+2023-11-20 15:37:27,991	INFO	root	key = '3' increased in priority
+2023-11-20 15:37:27,991	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:37:27,991	INFO	root	Trying add key = '6' in cache
+2023-11-20 15:37:27,991	DEBUG	root	Attempt to create ListNode with key = '6' and value = 'six'
+2023-11-20 15:37:27,991	DEBUG	root	Created successfully ListNode with key = '6' and value = 'six' 
+2023-11-20 15:37:27,991	DEBUG	root	Attempt to insert ListNode with key = '6', the node is located between 'newest' and '3'
+2023-11-20 15:37:27,991	INFO	root	key = '6' increased in priority
+2023-11-20 15:37:27,991	INFO	root	Added successfully key = '6' in cache
+2023-11-20 15:37:27,991	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '4'
+2023-11-20 15:37:27,991	DEBUG	root	Attempt to delete ListNode with key = '4', the node is located between '5' and 'oldest'
+2023-11-20 15:37:27,991	INFO	root	key = '4' deleted from cache
+2023-11-20 15:37:27,991	ERROR	root	Requested key = '4' does not exist in cache
+2023-11-20 15:37:27,991	ERROR	root	Requested key = '7' does not exist in cache
+2023-11-20 15:37:31,343	INFO	root	LRUCache was created, size = 3
+2023-11-20 15:37:31,343	INFO	root	key = '1' increased in priority
+2023-11-20 15:37:31,343	INFO	root	key = '1' deleted from cache
+2023-11-20 15:37:31,343	INFO	root	key = '1' increased in priority
+2023-11-20 15:37:31,343	INFO	root	key = '2' increased in priority
+2023-11-20 15:37:31,343	INFO	root	key = '3' increased in priority
+2023-11-20 15:37:31,343	INFO	root	key = '4' increased in priority
+2023-11-20 15:37:31,343	INFO	root	key = '1' deleted from cache
+2023-11-20 15:37:31,343	INFO	root	key = '5' increased in priority
+2023-11-20 15:37:31,343	INFO	root	key = '2' deleted from cache
+2023-11-20 15:37:31,343	INFO	root	key = '3' deleted from cache
+2023-11-20 15:37:31,344	INFO	root	key = '3' increased in priority
+2023-11-20 15:37:31,344	INFO	root	key = '6' increased in priority
+2023-11-20 15:37:31,344	INFO	root	key = '4' deleted from cache
+2023-11-20 15:37:48,383	INFO	root	LRUCache was created, size = 3
+2023-11-20 15:37:48,383	INFO	root	Trying add key = '1' in cache
+2023-11-20 15:37:48,383	INFO	root	key = '1' increased in priority
+2023-11-20 15:37:48,383	INFO	root	Added successfully key = '1' in cache
+2023-11-20 15:37:48,383	INFO	root	key = '1' deleted from cache
+2023-11-20 15:37:48,383	INFO	root	key = '1' increased in priority
+2023-11-20 15:37:48,383	INFO	root	'get' with key = '1' executed successfully
+2023-11-20 15:37:48,383	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:37:48,383	INFO	root	Trying add key = '2' in cache
+2023-11-20 15:37:48,383	INFO	root	key = '2' increased in priority
+2023-11-20 15:37:48,383	INFO	root	Added successfully key = '2' in cache
+2023-11-20 15:37:48,383	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:37:48,384	INFO	root	key = '3' increased in priority
+2023-11-20 15:37:48,384	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:37:48,384	INFO	root	Trying add key = '4' in cache
+2023-11-20 15:37:48,384	INFO	root	key = '4' increased in priority
+2023-11-20 15:37:48,384	INFO	root	Added successfully key = '4' in cache
+2023-11-20 15:37:48,384	INFO	root	key = '1' deleted from cache
+2023-11-20 15:37:48,384	ERROR	root	Requested key = '1' does not exist in cache
+2023-11-20 15:37:48,384	INFO	root	Trying add key = '5' in cache
+2023-11-20 15:37:48,384	INFO	root	key = '5' increased in priority
+2023-11-20 15:37:48,384	INFO	root	Added successfully key = '5' in cache
+2023-11-20 15:37:48,384	INFO	root	key = '2' deleted from cache
+2023-11-20 15:37:48,384	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:37:48,384	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:37:48,384	INFO	root	key = '3' is added that is already in cache
+2023-11-20 15:37:48,384	INFO	root	key = '3' deleted from cache
+2023-11-20 15:37:48,384	INFO	root	key = '3' increased in priority
+2023-11-20 15:37:48,384	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:37:48,384	INFO	root	Trying add key = '6' in cache
+2023-11-20 15:37:48,384	INFO	root	key = '6' increased in priority
+2023-11-20 15:37:48,384	INFO	root	Added successfully key = '6' in cache
+2023-11-20 15:37:48,384	INFO	root	key = '4' deleted from cache
+2023-11-20 15:37:48,384	ERROR	root	Requested key = '4' does not exist in cache
+2023-11-20 15:37:48,384	ERROR	root	Requested key = '7' does not exist in cache
+2023-11-20 15:37:56,436	INFO	root	LRUCache was created, size = 3
+2023-11-20 15:37:56,437	INFO	root	Trying add key = '1' in cache
+2023-11-20 15:37:56,437	DEBUG	root	Attempt to create ListNode with key = '1' and value = 'one'
+2023-11-20 15:37:56,437	DEBUG	root	Created successfully ListNode with key = '1' and value = 'one' 
+2023-11-20 15:37:56,437	INFO	root	key = '1' increased in priority
+2023-11-20 15:37:56,437	INFO	root	Added successfully key = '1' in cache
+2023-11-20 15:37:56,437	INFO	root	key = '1' deleted from cache
+2023-11-20 15:37:56,437	INFO	root	key = '1' increased in priority
+2023-11-20 15:37:56,437	INFO	root	'get' with key = '1' executed successfully
+2023-11-20 15:37:56,437	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:37:56,437	INFO	root	Trying add key = '2' in cache
+2023-11-20 15:37:56,437	DEBUG	root	Attempt to create ListNode with key = '2' and value = 'two'
+2023-11-20 15:37:56,437	DEBUG	root	Created successfully ListNode with key = '2' and value = 'two' 
+2023-11-20 15:37:56,437	INFO	root	key = '2' increased in priority
+2023-11-20 15:37:56,437	INFO	root	Added successfully key = '2' in cache
+2023-11-20 15:37:56,437	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:37:56,437	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'three'
+2023-11-20 15:37:56,437	DEBUG	root	Created successfully ListNode with key = '3' and value = 'three' 
+2023-11-20 15:37:56,437	INFO	root	key = '3' increased in priority
+2023-11-20 15:37:56,437	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:37:56,437	INFO	root	Trying add key = '4' in cache
+2023-11-20 15:37:56,437	DEBUG	root	Attempt to create ListNode with key = '4' and value = 'four'
+2023-11-20 15:37:56,437	DEBUG	root	Created successfully ListNode with key = '4' and value = 'four' 
+2023-11-20 15:37:56,437	INFO	root	key = '4' increased in priority
+2023-11-20 15:37:56,437	INFO	root	Added successfully key = '4' in cache
+2023-11-20 15:37:56,437	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '1'
+2023-11-20 15:37:56,437	INFO	root	key = '1' deleted from cache
+2023-11-20 15:37:56,437	ERROR	root	Requested key = '1' does not exist in cache
+2023-11-20 15:37:56,437	INFO	root	Trying add key = '5' in cache
+2023-11-20 15:37:56,438	DEBUG	root	Attempt to create ListNode with key = '5' and value = 'five'
+2023-11-20 15:37:56,438	DEBUG	root	Created successfully ListNode with key = '5' and value = 'five' 
+2023-11-20 15:37:56,438	INFO	root	key = '5' increased in priority
+2023-11-20 15:37:56,438	INFO	root	Added successfully key = '5' in cache
+2023-11-20 15:37:56,438	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '2'
+2023-11-20 15:37:56,438	INFO	root	key = '2' deleted from cache
+2023-11-20 15:37:56,438	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:37:56,438	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:37:56,438	INFO	root	key = '3' is added that is already in cache
+2023-11-20 15:37:56,438	INFO	root	key = '3' deleted from cache
+2023-11-20 15:37:56,438	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'new_three'
+2023-11-20 15:37:56,438	DEBUG	root	Created successfully ListNode with key = '3' and value = 'new_three' 
+2023-11-20 15:37:56,438	INFO	root	key = '3' increased in priority
+2023-11-20 15:37:56,438	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:37:56,438	INFO	root	Trying add key = '6' in cache
+2023-11-20 15:37:56,438	DEBUG	root	Attempt to create ListNode with key = '6' and value = 'six'
+2023-11-20 15:37:56,438	DEBUG	root	Created successfully ListNode with key = '6' and value = 'six' 
+2023-11-20 15:37:56,438	INFO	root	key = '6' increased in priority
+2023-11-20 15:37:56,438	INFO	root	Added successfully key = '6' in cache
+2023-11-20 15:37:56,438	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '4'
+2023-11-20 15:37:56,438	INFO	root	key = '4' deleted from cache
+2023-11-20 15:37:56,438	ERROR	root	Requested key = '4' does not exist in cache
+2023-11-20 15:37:56,438	ERROR	root	Requested key = '7' does not exist in cache
+2023-11-20 15:38:04,325	INFO	root	LRUCache was created, size = 3
+2023-11-20 15:38:04,325	INFO	root	Trying add key = '1' in cache
+2023-11-20 15:38:04,325	INFO	root	key = '1' increased in priority
+2023-11-20 15:38:04,325	INFO	root	Added successfully key = '1' in cache
+2023-11-20 15:38:04,325	INFO	root	key = '1' deleted from cache
+2023-11-20 15:38:04,325	INFO	root	key = '1' increased in priority
+2023-11-20 15:38:04,325	INFO	root	'get' with key = '1' executed successfully
+2023-11-20 15:38:04,325	INFO	root	Trying add key = '2' in cache
+2023-11-20 15:38:04,325	INFO	root	key = '2' increased in priority
+2023-11-20 15:38:04,325	INFO	root	Added successfully key = '2' in cache
+2023-11-20 15:38:04,325	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:38:04,325	INFO	root	key = '3' increased in priority
+2023-11-20 15:38:04,325	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:38:04,325	INFO	root	Trying add key = '4' in cache
+2023-11-20 15:38:04,325	INFO	root	key = '4' increased in priority
+2023-11-20 15:38:04,325	INFO	root	Added successfully key = '4' in cache
+2023-11-20 15:38:04,325	INFO	root	key = '1' deleted from cache
+2023-11-20 15:38:04,325	INFO	root	Trying add key = '5' in cache
+2023-11-20 15:38:04,325	INFO	root	key = '5' increased in priority
+2023-11-20 15:38:04,326	INFO	root	Added successfully key = '5' in cache
+2023-11-20 15:38:04,326	INFO	root	key = '2' deleted from cache
+2023-11-20 15:38:04,326	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:38:04,326	INFO	root	key = '3' deleted from cache
+2023-11-20 15:38:04,326	INFO	root	key = '3' increased in priority
+2023-11-20 15:38:04,326	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:38:04,326	INFO	root	Trying add key = '6' in cache
+2023-11-20 15:38:04,326	INFO	root	key = '6' increased in priority
+2023-11-20 15:38:04,326	INFO	root	Added successfully key = '6' in cache
+2023-11-20 15:38:04,326	INFO	root	key = '4' deleted from cache
+2023-11-20 15:38:14,852	INFO	root	LRUCache was created, size = 3
+2023-11-20 15:38:14,852	INFO	root	Trying add key = '1' in cache
+2023-11-20 15:38:14,852	DEBUG	root	Attempt to create ListNode with key = '1' and value = 'one'
+2023-11-20 15:38:14,852	DEBUG	root	Created successfully ListNode with key = '1' and value = 'one' 
+2023-11-20 15:38:14,852	DEBUG	root	Attempt to insert ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:38:14,852	INFO	root	key = '1' increased in priority
+2023-11-20 15:38:14,852	INFO	root	Added successfully key = '1' in cache
+2023-11-20 15:38:14,852	DEBUG	root	Attempt to delete ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:38:14,852	INFO	root	key = '1' deleted from cache
+2023-11-20 15:38:14,852	DEBUG	root	Attempt to insert ListNode with key = '1', the node is located between 'newest' and 'oldest'
+2023-11-20 15:38:14,852	INFO	root	key = '1' increased in priority
+2023-11-20 15:38:14,852	INFO	root	'get' with key = '1' executed successfully
+2023-11-20 15:38:14,852	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:38:14,852	INFO	root	Trying add key = '2' in cache
+2023-11-20 15:38:14,852	DEBUG	root	Attempt to create ListNode with key = '2' and value = 'two'
+2023-11-20 15:38:14,852	DEBUG	root	Created successfully ListNode with key = '2' and value = 'two' 
+2023-11-20 15:38:14,852	DEBUG	root	Attempt to insert ListNode with key = '2', the node is located between 'newest' and '1'
+2023-11-20 15:38:14,852	INFO	root	key = '2' increased in priority
+2023-11-20 15:38:14,852	INFO	root	Added successfully key = '2' in cache
+2023-11-20 15:38:14,852	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:38:14,852	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'three'
+2023-11-20 15:38:14,853	DEBUG	root	Created successfully ListNode with key = '3' and value = 'three' 
+2023-11-20 15:38:14,853	DEBUG	root	Attempt to insert ListNode with key = '3', the node is located between 'newest' and '2'
+2023-11-20 15:38:14,853	INFO	root	key = '3' increased in priority
+2023-11-20 15:38:14,853	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:38:14,853	INFO	root	Trying add key = '4' in cache
+2023-11-20 15:38:14,853	DEBUG	root	Attempt to create ListNode with key = '4' and value = 'four'
+2023-11-20 15:38:14,853	DEBUG	root	Created successfully ListNode with key = '4' and value = 'four' 
+2023-11-20 15:38:14,853	DEBUG	root	Attempt to insert ListNode with key = '4', the node is located between 'newest' and '3'
+2023-11-20 15:38:14,853	INFO	root	key = '4' increased in priority
+2023-11-20 15:38:14,853	INFO	root	Added successfully key = '4' in cache
+2023-11-20 15:38:14,853	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '1'
+2023-11-20 15:38:14,853	DEBUG	root	Attempt to delete ListNode with key = '1', the node is located between '2' and 'oldest'
+2023-11-20 15:38:14,853	INFO	root	key = '1' deleted from cache
+2023-11-20 15:38:14,853	ERROR	root	Requested key = '1' does not exist in cache
+2023-11-20 15:38:14,853	INFO	root	Trying add key = '5' in cache
+2023-11-20 15:38:14,853	DEBUG	root	Attempt to create ListNode with key = '5' and value = 'five'
+2023-11-20 15:38:14,853	DEBUG	root	Created successfully ListNode with key = '5' and value = 'five' 
+2023-11-20 15:38:14,853	DEBUG	root	Attempt to insert ListNode with key = '5', the node is located between 'newest' and '4'
+2023-11-20 15:38:14,853	INFO	root	key = '5' increased in priority
+2023-11-20 15:38:14,853	INFO	root	Added successfully key = '5' in cache
+2023-11-20 15:38:14,853	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '2'
+2023-11-20 15:38:14,853	DEBUG	root	Attempt to delete ListNode with key = '2', the node is located between '3' and 'oldest'
+2023-11-20 15:38:14,853	INFO	root	key = '2' deleted from cache
+2023-11-20 15:38:14,853	ERROR	root	Requested key = '2' does not exist in cache
+2023-11-20 15:38:14,853	INFO	root	Trying add key = '3' in cache
+2023-11-20 15:38:14,853	INFO	root	key = '3' is added that is already in cache
+2023-11-20 15:38:14,853	DEBUG	root	Attempt to delete ListNode with key = '3', the node is located between '4' and 'oldest'
+2023-11-20 15:38:14,853	INFO	root	key = '3' deleted from cache
+2023-11-20 15:38:14,853	DEBUG	root	Attempt to create ListNode with key = '3' and value = 'new_three'
+2023-11-20 15:38:14,853	DEBUG	root	Created successfully ListNode with key = '3' and value = 'new_three' 
+2023-11-20 15:38:14,853	DEBUG	root	Attempt to insert ListNode with key = '3', the node is located between 'newest' and '5'
+2023-11-20 15:38:14,853	INFO	root	key = '3' increased in priority
+2023-11-20 15:38:14,853	INFO	root	Added successfully key = '3' in cache
+2023-11-20 15:38:14,854	INFO	root	Trying add key = '6' in cache
+2023-11-20 15:38:14,854	DEBUG	root	Attempt to create ListNode with key = '6' and value = 'six'
+2023-11-20 15:38:14,854	DEBUG	root	Created successfully ListNode with key = '6' and value = 'six' 
+2023-11-20 15:38:14,854	DEBUG	root	Attempt to insert ListNode with key = '6', the node is located between 'newest' and '3'
+2023-11-20 15:38:14,854	INFO	root	key = '6' increased in priority
+2023-11-20 15:38:14,854	INFO	root	Added successfully key = '6' in cache
+2023-11-20 15:38:14,854	WARNING	root	The allowed size (3) is exceeded the value will be displaced with key = '4'
+2023-11-20 15:38:14,854	DEBUG	root	Attempt to delete ListNode with key = '4', the node is located between '5' and 'oldest'
+2023-11-20 15:38:14,854	INFO	root	key = '4' deleted from cache
+2023-11-20 15:38:14,854	ERROR	root	Requested key = '4' does not exist in cache
+2023-11-20 15:38:14,854	ERROR	root	Requested key = '7' does not exist in cache
