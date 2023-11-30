@@ -2,6 +2,7 @@
 #include <ctype.h>
 
 
+
 static void skip_space(const char** current) {
     while (**current && isspace((unsigned char)**current)) {
         (*current)++;
@@ -236,6 +237,7 @@ static int write_key_value(PyObject *key, PyObject *value, char **output, Py_ssi
     return 0;
 }
 
+
 static PyObject* cjson_dumps(PyObject* self, PyObject* args) {
 
     PyObject* dict = NULL;
@@ -256,8 +258,9 @@ static PyObject* cjson_dumps(PyObject* self, PyObject* args) {
 
     Py_ssize_t pos = 0;
     while (PyDict_Next(dict, &pos, &key, &value)) {
-        write_key_value(key, value, NULL, &output_size);
-
+        if (write_key_value(key, value, NULL, &output_size) != 0) {
+            return NULL;
+        }
         if (pos < PyDict_Size(dict)) {
             output_size += 2; // для ", "
         }
@@ -276,7 +279,9 @@ static PyObject* cjson_dumps(PyObject* self, PyObject* args) {
 
     append_char_to_output('{', &current_output, &output_size);
     while (PyDict_Next(dict, &pos, &key, &value)) {
-        write_key_value(key, value, &current_output, &output_size);
+        if (write_key_value(key, value, &current_output, &output_size) != 0) {
+            return NULL;
+        }
         if (pos < PyDict_Size(dict)) {
             append_char_to_output(',', &current_output, &output_size);
             append_char_to_output(' ', &current_output, &output_size);

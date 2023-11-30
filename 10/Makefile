@@ -2,7 +2,7 @@ VENV := venv
 
 .PHONY: all test clean
 
-all: venv install setup linters
+all: clean venv install setup linters
 
 venv:
 	python3 -m venv $(VENV) && \
